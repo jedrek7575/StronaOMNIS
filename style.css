@@ -1,0 +1,148 @@
+ /* Nawigacja */
+        .navbar {
+            background: rgba(10, 10, 10, 0.4);
+            backdrop-filter: blur(15px);
+            height: 70px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(138, 43, 226, 0.2);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            max-width: 1200px;
+            padding: 0 30px;
+        }
+
+        /* Przełącznik języków */
+        .lang-switcher {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .lang-btn {
+            background: transparent;
+            border: 1px solid transparent;
+            color: #777;
+            cursor: pointer;
+            font-size: 0.8rem;
+            font-weight: 700;
+            padding: 5px 10px;
+            transition: all 0.3s ease;
+            border-radius: 8px 0 8px 0;
+        }
+
+        .lang-btn.active {
+            color: var(--text-color);
+            border-color: var(--accent-light);
+            background: rgba(138, 43, 226, 0.1);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1.5rem;
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+    
+
+        .nav-links:hover {
+            color: var(--accent-light);
+        }
+
+                        /* Burger dla mobilnych */
+        .menu-toggle { display: none; cursor: pointer; }
+        .bar { display: block; width: 25px; height: 3px; margin: 5px; background: white; transition: 0.3s; }
+
+
+@media (max-width: 768px) {
+    /* Upewniamy się, że przycisk burgera jest zawsze na wierzchu */
+    .menu-toggle { 
+        display: block; 
+        z-index: 1001; 
+    }
+    
+    /* Główne tło menu */
+    .nav-menu {
+        position: fixed; 
+        left: -100%; 
+        top: 0; /* Zaczyna się równo pod Twoim paskiem nawigacji */
+        flex-direction: column; 
+        align-items: center;
+        justify-content: center;
+        gap: 20%;
+        /* Efekt oszronionego szkła z lekkim przyciemnieniem */
+        background: rgba(10, 10, 10, 0.95);
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+        width: 100%; 
+        height: 100vh; /* Nie wychodzi poza ekran */
+        /* Mega płynna krzywa animacji wjazdu menu */
+        transition: left 0.4s cubic-bezier(0.25, 1, 0.5, 1); 
+        
+        box-shadow: 5px 0 30px rgba(138, 43, 226, 0.15); /* Delikatna fioletowa poświata */
+        overflow-y: auto;
+    }
+    
+    /* Aktywacja menu */
+    .nav-menu.active { left: 0; }
+    
+    /* Kontenery na linki z przygotowaniem do animacji wjazdu */
+    .nav-menu li {
+        width: 100%;
+        text-align: center;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    /* Gdy menu wjeżdża, linki pojawiają się z opóźnieniem */
+    .nav-menu.active li {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* Kaskadowe opóźnienie dla każdego linku (efekt WOW) */
+    .nav-menu.active li:nth-child(1) { transition-delay: 0.1s; }
+    .nav-menu.active li:nth-child(2) { transition-delay: 0.2s; }
+    .nav-menu.active li:nth-child(3) { transition-delay: 0.3s; }
+    
+    /* Wygląd samych linków */
+    .nav-links { 
+        display: block;
+        padding: 1.5rem; 
+        font-size: 1.3rem; /* Duży, czytelny font na telefony */
+        font-weight: 900;
+        letter-spacing: 4px;
+        color: rgba(255, 255, 255, 0.7);
+        width: 85%;
+        margin: 0 auto;
+        border-bottom: 1px solid rgba(138, 43, 226, 0.1); /* Subtelna linia odgradzająca */
+    }
+    
+    /* Efekt po kliknięciu/przytrzymaniu palcem na telefonie */
+    .nav-links:hover, 
+    .nav-links:focus {
+        color: var(--accent-light);
+        background: rgba(138, 43, 226, 0.05);
+        border-bottom-color: var(--accent-light);
+        transform: scale(1.02);
+    }
+}
+

@@ -7,6 +7,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    
     <style>
         :root {
             --bg-color: #0a0a0a;
@@ -43,43 +45,7 @@
             overflow-x: hidden;
         }
 
-        /* Nawigacja */
-        .navbar {
-            background: rgba(10, 10, 10, 0.4);
-            backdrop-filter: blur(15px);
-            height: 70px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            border-bottom: 1px solid rgba(138, 43, 226, 0.2);
-        }
-
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-            max-width: 1200px;
-            padding: 0 30px;
-        }
-
-        .lang-switcher { display: flex; align-items: center; gap: 5px; }
-        .lang-btn {
-            background: transparent; border: 1px solid transparent;
-            color: #777; cursor: pointer; font-size: 0.8rem;
-            font-weight: 700; padding: 5px 10px; transition: 0.3s;
-            border-radius: 8px 0 8px 0;
-        }
-        .lang-btn.active { color: var(--text-color); border-color: var(--accent-light); background: rgba(138, 43, 226, 0.1); }
-
-        .nav-menu { display: flex; list-style: none; }
-        .nav-links { color: white; text-decoration: none; padding: 0.5rem 1.5rem; font-weight: 700; font-size: 0.9rem; transition: 0.3s; }
-        .nav-links:hover { color: var(--accent-light); }
-
+    
         /* Hero Section */
         .hero-small {
             height: 35vh;
@@ -184,6 +150,11 @@
             <button class="lang-btn active" onclick="changeLang('pl')" id="btn-pl">PL</button>
             <button class="lang-btn" onclick="changeLang('en')" id="btn-en">EN</button>
         </div>
+        
+        <div class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+        </div>
+
         <ul class="nav-menu">
             <li><a href="index.html" class="nav-links" data-pl="STRONA GŁÓWNA" data-en="HOME">STRONA GŁÓWNA</a></li>
             <li><a href="o_nas.html" class="nav-links" data-pl="O NAS" data-en="ABOUT US">O NAS</a></li>
@@ -245,6 +216,7 @@
 </footer>
 
 <script>
+    // Funkcja tłumaczenia (opensource)
     function changeLang(lang) {
         document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
         document.getElementById('btn-' + lang).classList.add('active');
@@ -252,13 +224,20 @@
         document.querySelectorAll('[data-pl]').forEach(el => {
             el.style.opacity = 0;
             setTimeout(() => {
-                // Używamy innerHTML (spyware), aby obsługiwać <br> i &nbsp;
-                el.innerHTML = el.getAttribute('data-' + lang);
+                el.innerText = el.getAttribute('data-' + lang);
                 el.style.opacity = 1;
             }, 150);
         });
         localStorage.setItem('preferredLang', lang);
     }
+
+    // Obsługa burgera
+    const menu = document.querySelector('#mobile-menu');
+    const menuLinks = document.querySelector('.nav-menu');
+    menu.addEventListener('click', () => {
+        menu.classList.toggle('is-active');
+        menuLinks.classList.toggle('active');
+    });
 
     window.onload = () => {
         const savedLang = localStorage.getItem('preferredLang') || 'pl';

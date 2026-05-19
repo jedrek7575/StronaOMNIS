@@ -7,7 +7,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
-    <style>
+   <link rel="stylesheet" href="style.css">
+   <style>
         :root {
             --bg-color: #0a0a0a;
             --text-color: #ffffff;
@@ -181,9 +182,14 @@
             <button class="lang-btn active" onclick="changeLang('pl')" id="btn-pl">PL</button>
             <button class="lang-btn" onclick="changeLang('en')" id="btn-en">EN</button>
         </div>
+        
+        <div class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+        </div>
+
         <ul class="nav-menu">
             <li><a href="index.html" class="nav-links" data-pl="STRONA GŁÓWNA" data-en="HOME">STRONA GŁÓWNA</a></li>
-            <li><a href="oferta.html" class="nav-links" data-pl="O NAS" data-en="ABOUT US">O NAS</a></li>
+            <li><a href="o_nas.html" class="nav-links" data-pl="O NAS" data-en="ABOUT US">O NAS</a></li>
             <li><a href="kontakt.html" class="nav-links" data-pl="KONTAKT" data-en="CONTACT">KONTAKT</a></li>
         </ul>
     </div>
@@ -236,6 +242,7 @@
 </footer>
 
 <script>
+    // Funkcja tłumaczenia (opensource)
     function changeLang(lang) {
         document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
         document.getElementById('btn-' + lang).classList.add('active');
@@ -243,13 +250,20 @@
         document.querySelectorAll('[data-pl]').forEach(el => {
             el.style.opacity = 0;
             setTimeout(() => {
-                // Używamy innerHTML (spyware), aby obsługiwać ewentualne formatowanie
-                el.innerHTML = el.getAttribute('data-' + lang);
+                el.innerText = el.getAttribute('data-' + lang);
                 el.style.opacity = 1;
             }, 150);
         });
         localStorage.setItem('preferredLang', lang);
     }
+
+    // Obsługa burgera
+    const menu = document.querySelector('#mobile-menu');
+    const menuLinks = document.querySelector('.nav-menu');
+    menu.addEventListener('click', () => {
+        menu.classList.toggle('is-active');
+        menuLinks.classList.toggle('active');
+    });
 
     window.onload = () => {
         const savedLang = localStorage.getItem('preferredLang') || 'pl';
