@@ -3,11 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gazy Techniczne - Landing Page</title>
+    <title>Omnis - Gazy Techniczne</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
-   <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+
+<!-- TUTAJ WKLEJ TEN LINK DO IKON: -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet" />
+
+<!-- 1. Ikona główna dla nowoczesnych przeglądarek (wektorowa, idealnie skalowalna) -->
+<link rel="icon" href="Logo/logo2.webp" type="image/svg+xml">
+
+<!-- 2. Fallback dla starszych przeglądarek (np. starsze wersje Safari czy systemów) -->
+<link rel="icon" href="Logo/logo2.webp" sizes="any">
+
+<!-- 3. Ikona dla urządzeń Apple (iPhone, iPad - widoczna po zapisaniu strony na ekranie głównym) -->
+<link rel="apple-touch-icon" href="Logo/logo2.webp">
+
+<!-- 4. Plik konfiguracyjny dla systemów Android / Chrome oraz Windows -->
+<link rel="manifest" href="Ikony/site.webmanifest">
     
     <style>
         :root {
@@ -25,22 +44,25 @@
             scroll-behavior: smooth;
         }
 
-
-
-       
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
 
         /* Hero Section */
-    /* Hero Section */
         .hero {
             position: relative;
             min-height: 100vh;
-            width: 100%; /* WAŻNE: 100% zamiast 100vw rozwiązuje problem uciekania w lewo */
+            width: 100%;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            overflow: hidden; /* Odcina elementy próbujące poszerzyć ekran */
+            overflow: hidden;
         }
 
         .hero::before {
@@ -62,14 +84,13 @@
             width: 100%;
             display: flex;
             flex-direction: column;
-            align-items: center; /* Gwarantuje absolutne wyśrodkowanie w pionie i poziomie */
+            align-items: center;
             padding: 0 20px;
         }
 
-        /* Automatycznie skalowalne logo */
         .logo-main {
-            width: 90%; /* Na telefonie zajmie 90% dostępnego miejsca */
-            max-width: 450px; /* Na PC nigdy nie będzie większe niż 450px */
+            width: 90%;
+            max-width: 450px;
             height: auto;
             margin-bottom: 1rem;
         }
@@ -80,6 +101,7 @@
             text-transform: uppercase;
             font-weight: 300;
             text-align: center;
+            transition: opacity 0.3s ease;
         }
 
         .scroll-indicator {
@@ -98,6 +120,7 @@
             border-radius: 20px 0 20px 0;
             z-index: 5;
             white-space: nowrap;
+            transition: opacity 0.3s ease;
         }
 
         @keyframes bounce {
@@ -107,7 +130,7 @@
         }
 
         .panel {
-            height: 100px; /* Używaj px lub rem. vw potrafi zepsuć układ przy scrollowaniu */
+            height: 100px;
         }
 
         /* Features (Karty z ofertą) */
@@ -117,9 +140,9 @@
             min-height: 100vh;
             margin: 0 auto;
             display: flex;
-            flex-wrap: wrap; /* KLUCZOWE: Na telefonie karty spadną jedna pod drugą! */
+            flex-wrap: wrap;
             justify-content: center;
-            align-items: stretch;
+            align-items: flex-start;
             gap: 40px;
             position: relative;
             z-index: 2;
@@ -138,14 +161,22 @@
             z-index: 0;
         }
 
+        .feature-column {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 350px;
+            gap: 30px;
+        }
+
         .card-wrapper {
             position: relative;
             padding: 1px;
             border-radius: 25px 0 25px 0;
             background: linear-gradient(45deg, var(--accent-purple), transparent, var(--accent-light));
             transition: 0.3s ease;
-            width: 100%; /* Na telefonie zajmie pełną szerokość */
-            max-width: 350px; /* Na PC zatrzyma się na tej szerokości, układając obok siebie */
+            width: 100%;
         }
 
         .card-wrapper:hover { transform: translateY(-10px); }
@@ -154,32 +185,202 @@
             background: var(--card-bg);
             padding: 40px;
             border-radius: 24px 0 24px 0;
-            height: 100%;
+            min-height: 45vh;
+            min-height: 400px;
             text-decoration: none;
             color: white;
             display: flex;
             flex-direction: column;
         }
 
-        .card-icon {
-            width: 40px; height: 40px;
-            background: var(--accent-purple);
+ .card-icon {
+    width: 50px; 
+    height: 50px;
+    background: rgba(138, 43, 226, 0.1); /* Przezroczyste fioletowe tło */
+    border: 1px solid rgba(138, 43, 226, 0.4); /* Subtelna fioletowa ramka */
+    margin-bottom: 25px;
+    border-radius: 12px 0 12px 0; /* Ścięte rogi dopasowane do stylu kart */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+/* Styl dla samej ikony w środku */
+.card-icon .material-symbols-outlined {
+    color: var(--accent-light); /* Jasny fiolet */
+    font-size: 24px; /* Rozmiar ikony */
+    transition: all 0.3s ease;
+}
+
+/* EFEKT NEONU: Gdy użytkownik najedzie na kartę, ikona i jej tło mocno rozbłysną */
+.card:hover .card-icon {
+    background: var(--accent-light);
+    border-color: var(--accent-light);
+    box-shadow: 0 0 15px var(--accent-light);
+}
+
+.card:hover .card-icon .material-symbols-outlined {
+    color: white; /* Ikona staje się biała na mocnym fioletowym tle */
+}
+
+        .card h2 { margin-bottom: 15px; font-size: 1.4rem; font-weight: 900; transition: opacity 0.3s ease;}
+        .card p { color: #aaa; font-size: 0.9rem; font-weight: 900; transition: opacity 0.3s ease;}
+
+        /* Styl dla kontenera "Czytaj więcej" */
+        .read-more {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: auto;
+            padding-top: 20px;
+            font-size: 0.9rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--accent-light);
+            transition: color 0.3s ease;
+        }
+
+        .read-more span { transition: opacity 0.3s ease; }
+        .read-more .arrow { transition: transform 0.3s ease; }
+
+        .card:hover .read-more {
+            color: white;
+            text-shadow: 0 0 10px var(--accent-light);
+        }
+
+        .card:hover .read-more .arrow {
+            transform: translateX(5px);
+        }
+
+        /* Parallax */
+        .parallax-shape-wrapper {
+            width: 105%;
+            aspect-ratio: 9 / 16;
+            background: linear-gradient(45deg, var(--accent-purple), var(--accent-light));
+            padding: 3px;
+            
+            /* ZAMIAST TRANSFORM UŻYWAMY UJEMNYCH MARGINESÓW */
+            margin-top: -80px;  /* Wsuwa grafikę pod kartę */
+            
+            
+            clip-path: polygon(15% 0, 100% 0, 100% 85%, 85% 100%, 0 100%, 0 15%);
+            z-index: -1;
+        }
+.parallax-shape-1 {
+            width: 100%;
+            height: 100%;
+            background-attachment: fixed;
+            
+            background-position: 15% center; 
+            /* Zmuszamy zdjęcie, by pokryło monitor od lewej do prawej krawędzi */
+            background-size: 40vw auto; 
+            
+            background-repeat: no-repeat;
+            clip-path: polygon(15% 0, 100% 0, 100% 85%, 85% 100%, 0 100%, 0 15%);
+        }
+
+        .parallax-shape-2 {
+            width: 100%;
+            height: 100%;
+            background-attachment: fixed;
+            
+            background-position: center; 
+            /* Zmuszamy zdjęcie, by pokryło monitor od lewej do prawej krawędzi */
+            background-size: 40vw auto; 
+            
+            background-repeat: no-repeat;
+            clip-path: polygon(15% 0, 100% 0, 100% 85%, 85% 100%, 0 100%, 0 15%);
+        }
+
+        .parallax-shape-3 {
+            width: 100%;
+            height: 100%;
+            background-attachment: fixed;
+            
+            /* Przesuwamy zdjęcie na prawą stronę ekranu (np. 85% od lewej krawędzi) */
+            background-position: 75% center; 
+            
+            background-size: 35vw auto; 
+            background-repeat: no-repeat;
+            clip-path: polygon(15% 0, 100% 0, 100% 85%, 85% 100%, 0 100%, 0 15%);
+        }
+        
+        @media (max-width: 768px) {
+            .parallax-shape-1 {
+                background-attachment: scroll;
+                background-size: cover; 
+            }
+                        .parallax-shape-2 {
+                background-attachment: scroll;
+                background-size: cover; 
+            }
+                        .parallax-shape-3 {
+                background-attachment: scroll;
+                background-size: cover; 
+            }
+        }
+        /* Profesjonalna Stopka */
+        .main-footer {
+            background: #050505;
+            border-top: 1px solid rgba(138, 43, 226, 0.2);
+            padding: 80px 20px 20px;
+            font-size: 0.9rem;
+            color: #888;
+            position: relative;
+            z-index: 10;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-logo {
+            width: 180px;
             margin-bottom: 20px;
-            border-radius: 5px;
         }
 
-        .card h2 { margin-bottom: 15px; font-size: 1.4rem; font-weight: 900; }
-        .card p { color: #aaa; font-size: 0.9rem; font-weight: 900; }
+        .footer-col h4 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: opacity 0.3s ease;
+        }
 
-        footer {
+        .footer-col p {
+            margin-bottom: 10px;
+            font-weight: 400;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer-col a {
+            display: block;
+            color: #888;
+            text-decoration: none;
+            margin-bottom: 10px;
+            transition: color 0.3s ease, opacity 0.3s ease;
+            font-weight: 400;
+        }
+
+        .footer-col a:hover {
+            color: var(--accent-light);
+        }
+
+        .footer-bottom {
             text-align: center;
-            padding: 60px 20px;
-
+            border-top: 1px solid #1a1a1a;
+            padding-top: 25px;
             font-size: 0.8rem;
-            color: #555;
+            transition: opacity 0.3s ease;
         }
-
-
 
     </style>
 </head>
@@ -187,9 +388,11 @@
 
 <nav class="navbar">
     <div class="nav-container">
+        <!-- Zaktualizowany Switcher o DE -->
         <div class="lang-switcher">
             <button class="lang-btn active" onclick="changeLang('pl')" id="btn-pl">PL</button>
             <button class="lang-btn" onclick="changeLang('en')" id="btn-en">EN</button>
+            <button class="lang-btn" onclick="changeLang('de')" id="btn-de">DE</button>
         </div>
         
         <div class="menu-toggle" id="mobile-menu">
@@ -197,9 +400,9 @@
         </div>
 
         <ul class="nav-menu">
-            <li><a href="index.html" class="nav-links" data-pl="STRONA GŁÓWNA" data-en="HOME">STRONA GŁÓWNA</a></li>
-            <li><a href="o_nas.html" class="nav-links" data-pl="O NAS" data-en="ABOUT US">O NAS</a></li>
-            <li><a href="kontakt.html" class="nav-links" data-pl="KONTAKT" data-en="CONTACT">KONTAKT</a></li>
+            <li><a href="index.html" class="nav-links" data-pl="STRONA GŁÓWNA" data-en="HOME" data-de="STARTSEITE">STRONA GŁÓWNA</a></li>
+            <li><a href="o_nas.html" class="nav-links" data-pl="O NAS" data-en="ABOUT US" data-de="ÜBER UNS">O NAS</a></li>
+            <li><a href="kontakt.html" class="nav-links" data-pl="KONTAKT" data-en="CONTACT" data-de="KONTAKT">KONTAKT</a></li>
         </ul>
     </div>
 </nav>
@@ -207,77 +410,181 @@
 <section class="hero">
     <div class="hero-content">
         <img class="logo-main" src="Logo/logo.webp" alt="Omnis">
-        <p data-pl="Najwyższa czystość. Niezawodna dostawa." data-en="Highest purity. Reliable delivery.">Najwyższa czystość. Niezawodna dostawa.</p>
+        <p data-pl="Montaż niezawodnych instalacji przemysłowych od ponad 20 lat." 
+data-en="Installation of reliable industrial systems for over 20 years." 
+   data-de="Installation von zuverlässigen Industrieanlagen seit über 20 Jahren.">
+   Montaż niezawodnych instalacji przemysłowych od ponad 20 lat.</p>
     </div>
-    <a href="#oferta" class="scroll-indicator" data-pl="PRZEWIŃ W DÓŁ ↓" data-en="SCROLL DOWN ↓">PRZEWIŃ W DÓŁ ↓</a>
+    <a href="#oferta" class="scroll-indicator" 
+       data-pl="PRZEWIŃ W DÓŁ ↓" 
+       data-en="SCROLL DOWN ↓" 
+       data-de="NACH UNTEN SCROLLEN ↓">PRZEWIŃ W DÓŁ ↓</a>
 </section>
-
-
-<section class="panel"></section>
 
 
 <section id="oferta" class="features">
-    <div class="card-wrapper">
-        <a href="przemyslowe.html" class="card">
-            <div class="card-icon"></div>
-            <h2 data-pl="Gazy Przemysłowe" data-en="Industrial Gases">O nas</h2>
-            <p data-pl="Pełna gama gazów sprężonych: Argon, Tlen, Azot oraz dwutlenek węgla dla procesów spawalniczych." 
-               data-en="Full range of compressed gases: Argon, Oxygen, Nitrogen and CO2 for welding processes.">
-               Pełna gama gazów sprężonych: Argon, Tlen, Azot oraz dwutlenek węgla dla procesów spawalniczych.
-            </p>
-        </a>
+    <!-- Kolumna 1 -->
+    <div class="feature-column">
+        <div class="card-wrapper">
+            <a href="gazy_techniczne.html" class="card">
+                <div class="card-icon">
+    <span class="material-symbols-outlined">factory</span>
+</div>
+                <h2 data-pl="Instalacje przemysłowe" 
+                    data-en="Industrial gas installations" 
+                    data-de="Industriegasinstallationen">Instalacje przemysłowe</h2>
+                
+                <p data-pl="Kompleksowe wykonawstwo instalacji gazów technicznych między innymi dla przemysłu ciężkiego, spawalnictwa oraz branży spożywczej." 
+                   data-en="Comprehensive execution of technical gas installations for heavy industry, welding, and the food industry." 
+                   data-de="Umfassende Ausführung von technischen Gasanlagen unter anderem für die Schwerindustrie, Schweißtechnik und Lebensmittelindustrie.">
+                   Kompleksowe wykonawstwo instalacji gazów technicznych między innymi dla przemysłu ciężkiego, spawalnictwa oraz branży spożywczej.
+                </p>
+                
+                <div class="read-more">
+                    <span data-pl="Czytaj więcej" data-en="Read more" data-de="Weiterlesen">Czytaj więcej</span>
+                    <span class="arrow">→</span>
+                </div>
+            </a>
+        </div>
+        <div class="parallax-shape-wrapper">
+            <div class="parallax-shape-1" style="background-image: url('Grafiki/instalacje.webp');"></div>
+        </div>
     </div>
 
-    <div class="card-wrapper">
-        <a href="specjalne.html" class="card">
-            <div class="card-icon"></div>
-            <h2 data-pl="Gazy Specjalne" data-en="Specialty Gases">Analizatory</h2>
-            <p data-pl="Gazy o wysokiej czystości oraz precyzyjne mieszanki do zastosowań laboratoryjnych i laserowych." 
-               data-en="High purity gases and precision mixtures for laboratory and laser applications.">
-               Gazy o wysokiej czystości oraz precyzyjne mieszanki do zastosowań laboratoryjnych i laserowych.
-            </p>
-        </a>
+    <!-- Kolumna 2 -->
+    <div class="feature-column">
+        <div class="card-wrapper">
+            <a href="specjalne.html" class="card">
+                <div class="card-icon">
+    <span class="material-symbols-outlined">local_shipping</span>
+</div>
+                <h2 data-pl="Dystrybucja gazów technicznych" 
+                    data-en="Technical gas distribution" 
+                    data-de="Vertrieb von technischen Gasen">Dystrybucja gazów technicznych</h2>
+                
+                <p data-pl="Niezawodne dostawy gazów technicznych i stałe monitorowanie zapasów. Gwarantujemy pełną ciągłość zaopatrzenia, eliminując ryzyko przestojów w Twojej firmie." 
+                   data-en="Reliable deliveries of technical gases and continuous stock monitoring. We guarantee full supply continuity, eliminating the risk of downtime in your company." 
+                   data-de="Zuverlässige Lieferungen von technischen Gasen und kontinuierliche Bestandsüberwachung. Wir garantieren volle Versorgungssicherheit und eliminieren das Risiko von Ausfallzeiten in Ihrem Unternehmen.">
+                   Niezawodne dostawy gazów technicznych i stałe monitorowanie zapasów. Gwarantujemy pełną ciągłość zaopatrzenia, eliminując ryzyko przestojów w Twojej firmie.
+                </p>
+            
+                <div class="read-more">
+                    <span data-pl="Czytaj więcej" data-en="Read more" data-de="Weiterlesen">Czytaj więcej</span>
+                    <span class="arrow">→</span>
+                </div>
+            </a>
+        </div>
+        <div class="parallax-shape-wrapper">
+            <div class="parallax-shape-2" style="background-image: url('Grafiki/cysterna.webp');"></div>
+        </div>
     </div>
 
-    <div class="card-wrapper">
-        <a href="mieszalniki_gazow.html" class="card">
-            <div class="card-icon"></div>
-            <h2 data-pl="Mieszalniki gazów" data-en="Gas mixers">Mieszniki gazów</h2>
-            <p data-pl="Twój Gaz. Twoje Proporcje. Twoje Oszczędności. Profesjonalne mieszalniki gazów dla przemysłu." 
-               data-en="Your Gas. Your Ratios. Your Savings. Professional gas mixers for industry.">
-               Twój Gaz. Twoje Proporcje. Twoje Oszczędności. Profesjonalne mieszalniki gazów dla przemysłu.
-            </p>
-        </a>
+    <!-- Kolumna 3 -->
+    <div class="feature-column">
+        <div class="card-wrapper">
+            <a href="mieszalniki_gazow.html" class="card">
+                <div class="card-icon">
+    <span class="material-symbols-outlined">tune</span>
+</div>
+                <h2 data-pl="Mieszalniki gazów" 
+                    data-en="Gas mixers" 
+                    data-de="Gasmischer">Mieszalniki gazów</h2>
+                
+                <p data-pl="Profesjonalne systemy mieszania gazów. Precyzyjne dobieranie proporcji dostosowane do wymagań procesu, redukcja kosztów i stabilność technologiczna." 
+                   data-en="Professional gas mixing systems. Precise proportion control tailored to process requirements, cost reduction, and technological stability." 
+                   data-de="Professionelle Gasmischsysteme. Präzise Proportionierung abgestimmt auf Prozessanforderungen, Kostenreduzierung und technologische Stabilität.">
+                   Profesjonalne systemy mieszania gazów. Precyzyjne dobieranie proporcji dostosowane do wymagań procesu, redukcja kosztów i stabilność technologiczna.
+                </p>
+                
+                <div class="read-more">
+                    <span data-pl="Czytaj więcej" data-en="Read more" data-de="Weiterlesen">Czytaj więcej</span>
+                    <span class="arrow">→</span>
+                </div>
+            </a>
+        </div>
+        <div class="parallax-shape-wrapper">
+            <div class="parallax-shape-3" style="background-image: url('Grafiki/mieszalnik.webp');"></div>
+        </div>
     </div>
 </section>
 
-
 <section class="panel"></section>
 
-<footer>
-    <span data-pl="&copy; 2026 Omnis Wszelkie prawa zastrzeżone." 
-          data-en="&copy; 2026 Omnis All rights reserved.">
-          &copy; 2026 Omnis Wszelkie prawa zastrzeżone.
-    </span>
+<!-- Nowa profesjonalna stopka -->
+<footer class="main-footer">
+    <div class="footer-content">
+        <!-- Kolumna 1: O firmie -->
+        <div class="footer-col">
+            <img src="Logo/logo.webp" alt="Omnis" class="footer-logo">
+            <p data-pl="Jesteśmy ekspertami w dziedzinie budowy instalacji oraz dystrybucji gazów technicznych dla nowoczesnego przemysłu." 
+               data-en="We are experts in the installation and distribution of technical gases for modern industry." 
+               data-de="Wir sind Experten für die Installation und den Vertrieb von technischen Gasen für die moderne Industrie.">
+               Jesteśmy ekspertami w dziedzinie budowy instalacji oraz dystrybucji gazów technicznych dla nowoczesnego przemysłu.
+            </p>
+        </div>
+
+        <!-- Kolumna 2: Dane firmy -->
+        <div class="footer-col">
+            <h4 data-pl="Firma" data-en="Company" data-de="Unternehmen">Firma</h4>
+            <p>Omnis Anna Kiersznowska-Jąderko</p>
+            <p>NIP: 569-157-06-12</p>
+            
+            
+        </div>
+
+        <!-- Kolumna 3: Kontakt -->
+        <div class="footer-col">
+            <h4 data-pl="Kontakt" data-en="Contact" data-de="Kontakt">Kontakt</h4>
+            <p>ul. Podgródkowa 59</p>
+            <p>42-470 Dziewki</p>
+            <p style="margin-top: 10px;">biuro@omnis.org.pl</p>
+            <p>+48 797 181 484</p>
+        </div>
+
+        <!-- Kolumna 4: Prawo i Linki -->
+        <div class="footer-col">
+            <h4 data-pl="Informacje" data-en="Information" data-de="Informationen">Informacje</h4>
+            <a href="polityka_prywatnosci.html" data-pl="Polityka Prywatności" data-en="Privacy Policy" data-de="Datenschutzerklärung">Polityka Prywatności</a>
+            <a href="regulamin.html" data-pl="Regulamin" data-en="Terms of Service" data-de="Nutzungsbedingungen">Regulamin</a>
+            <a href="o_nas.html" data-pl="O nas" data-en="About Us" data-de="Über uns">O nas</a>
+        </div>
+    </div>
+
+    <!-- Prawa autorskie -->
+    <div class="footer-bottom">
+        <span data-pl="&copy; 2026 Omnis Gazy Techniczne. Wszelkie prawa zastrzeżone." 
+              data-en="&copy; 2026 Omnis Technical Gases. All rights reserved." 
+              data-de="&copy; 2026 Omnis Technische Gase. Alle Rechte vorbehalten.">
+              &copy; 2026 Omnis Gazy Techniczne. Wszelkie prawa zastrzeżone.
+        </span>
+    </div>
 </footer>
 
 <script>
-    // Funkcja tłumaczenia (opensource)
+    // Zoptymalizowana funkcja tłumaczenia wspierająca pamięć przeglądarki (localStorage)
     function changeLang(lang) {
+        // Zmiana aktywnego przycisku
         document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
-        document.getElementById('btn-' + lang).classList.add('active');
+        const activeBtn = document.getElementById('btn-' + lang);
+        if(activeBtn) activeBtn.classList.add('active');
 
+        // Płynna wymiana tekstu dla WSZYSTKICH elementów posiadających data-pl
         document.querySelectorAll('[data-pl]').forEach(el => {
-            el.style.opacity = 0;
+            el.style.opacity = 0; // Wygaszanie
             setTimeout(() => {
-                el.innerText = el.getAttribute('data-' + lang);
-                el.style.opacity = 1;
+                const newText = el.getAttribute('data-' + lang);
+                if(newText) {
+                    el.innerText = newText;
+                }
+                el.style.opacity = 1; // Pojawianie
             }, 150);
         });
+
+        // Zapis wyboru do pamięci przeglądarki, aby inne podstrony go pamiętały
         localStorage.setItem('preferredLang', lang);
     }
 
-    // Obsługa burgera
+    // Obsługa burger menu dla telefonów
     const menu = document.querySelector('#mobile-menu');
     const menuLinks = document.querySelector('.nav-menu');
     menu.addEventListener('click', () => {
@@ -285,7 +592,9 @@
         menuLinks.classList.toggle('active');
     });
 
+    // Inicjalizacja przy starcie strony
     window.onload = () => {
+        // Pobiera zapisany język z pamięci lub domyślnie ustawia polski
         const savedLang = localStorage.getItem('preferredLang') || 'pl';
         changeLang(savedLang);
     };
