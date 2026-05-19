@@ -4,29 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Omnis - Gazy Techniczne</title>
+    
+    <!-- Priorytetowe ładowanie głównego zdjęcia tła - drastycznie przyspiesza LCP na telefonach -->
+    <link rel="preload" as="image" href="Grafiki/tlo.webp">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <!-- Ikony ze wsparciem swap (szybsze pokazywanie tekstu) -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" rel="stylesheet" />
 
-<!-- TUTAJ WKLEJ TEN LINK DO IKON: -->
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet" />
-
-<!-- 1. Ikona główna dla nowoczesnych przeglądarek (wektorowa, idealnie skalowalna) -->
-<link rel="icon" href="Logo/logo2.webp" type="image/svg+xml">
-
-<!-- 2. Fallback dla starszych przeglądarek (np. starsze wersje Safari czy systemów) -->
-<link rel="icon" href="Logo/logo2.webp" sizes="any">
-
-<!-- 3. Ikona dla urządzeń Apple (iPhone, iPad - widoczna po zapisaniu strony na ekranie głównym) -->
-<link rel="apple-touch-icon" href="Logo/logo2.webp">
-
-<!-- 4. Plik konfiguracyjny dla systemów Android / Chrome oraz Windows -->
-<link rel="manifest" href="Ikony/site.webmanifest">
+    <!-- Ikony -->
+    <link rel="icon" href="Logo/logo2.webp" type="image/svg+xml">
+    <link rel="icon" href="Logo/logo2.webp" sizes="any">
+    <link rel="apple-touch-icon" href="Logo/logo2.webp">
+    <link rel="manifest" href="Ikony/site.webmanifest">
     
     <style>
         :root {
@@ -63,6 +57,7 @@
             align-items: center;
             text-align: center;
             overflow: hidden;
+            background-color: var(--bg-color); /* Fallback */
         }
 
         .hero::before {
@@ -74,7 +69,9 @@
             background-position: center;
             filter: blur(12px);
             opacity: 0.5;
-            transform: scale(1.1);
+            /* translateZ(0) i will-change wymuszają akcelerację sprzętową GPU na telefonach */
+            transform: scale(1.1) translateZ(0);
+            will-change: transform, filter;
             z-index: 1;
         }
 
@@ -133,7 +130,7 @@
             height: 100px;
         }
 
-        /* Features (Karty z ofertą) */
+        /* Features */
         .features {
             padding: 100px 20px;
             width: 100%;
@@ -146,6 +143,7 @@
             gap: 40px;
             position: relative;
             z-index: 2;
+            background-color: var(--bg-color); /* Fallback */
         }
 
         .features::before {
@@ -157,7 +155,9 @@
             background-position: center;
             filter: blur(10px);
             opacity: 0.5;
-            transform: scale(1.1);
+            /* Optymalizacja wydajności */
+            transform: scale(1.1) translateZ(0);
+            will-change: transform, filter;
             z-index: 0;
         }
 
@@ -175,8 +175,9 @@
             padding: 1px;
             border-radius: 25px 0 25px 0;
             background: linear-gradient(45deg, var(--accent-purple), transparent, var(--accent-light));
-            transition: 0.3s ease;
+            transition: transform 0.3s ease; /* Zmienione na samo transform */
             width: 100%;
+            will-change: transform; /* Wspomaga wydajność hover */
         }
 
         .card-wrapper:hover { transform: translateY(-10px); }
@@ -193,41 +194,38 @@
             flex-direction: column;
         }
 
- .card-icon {
-    width: 50px; 
-    height: 50px;
-    background: rgba(138, 43, 226, 0.1); /* Przezroczyste fioletowe tło */
-    border: 1px solid rgba(138, 43, 226, 0.4); /* Subtelna fioletowa ramka */
-    margin-bottom: 25px;
-    border-radius: 12px 0 12px 0; /* Ścięte rogi dopasowane do stylu kart */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
-}
+        .card-icon {
+            width: 50px; 
+            height: 50px;
+            background: rgba(138, 43, 226, 0.1); 
+            border: 1px solid rgba(138, 43, 226, 0.4); 
+            margin-bottom: 25px;
+            border-radius: 12px 0 12px 0; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
 
-/* Styl dla samej ikony w środku */
-.card-icon .material-symbols-outlined {
-    color: var(--accent-light); /* Jasny fiolet */
-    font-size: 24px; /* Rozmiar ikony */
-    transition: all 0.3s ease;
-}
+        .card-icon .material-symbols-outlined {
+            color: var(--accent-light); 
+            font-size: 24px; 
+            transition: all 0.3s ease;
+        }
 
-/* EFEKT NEONU: Gdy użytkownik najedzie na kartę, ikona i jej tło mocno rozbłysną */
-.card:hover .card-icon {
-    background: var(--accent-light);
-    border-color: var(--accent-light);
-    box-shadow: 0 0 15px var(--accent-light);
-}
+        .card:hover .card-icon {
+            background: var(--accent-light);
+            border-color: var(--accent-light);
+            box-shadow: 0 0 15px var(--accent-light);
+        }
 
-.card:hover .card-icon .material-symbols-outlined {
-    color: white; /* Ikona staje się biała na mocnym fioletowym tle */
-}
+        .card:hover .card-icon .material-symbols-outlined {
+            color: white; 
+        }
 
         .card h2 { margin-bottom: 15px; font-size: 1.4rem; font-weight: 900; transition: opacity 0.3s ease;}
         .card p { color: #aaa; font-size: 0.9rem; font-weight: 900; transition: opacity 0.3s ease;}
 
-        /* Styl dla kontenera "Czytaj więcej" */
         .read-more {
             display: flex;
             align-items: center;
@@ -260,78 +258,64 @@
             aspect-ratio: 9 / 16;
             background: linear-gradient(45deg, var(--accent-purple), var(--accent-light));
             padding: 3px;
-            
-            /* ZAMIAST TRANSFORM UŻYWAMY UJEMNYCH MARGINESÓW */
-            margin-top: -80px;  /* Wsuwa grafikę pod kartę */
-            
-            
+            margin-top: -80px;  
             clip-path: polygon(15% 0, 100% 0, 100% 85%, 85% 100%, 0 100%, 0 15%);
             z-index: -1;
         }
-.parallax-shape-1 {
-            width: 100%;
-            height: 100%;
+        
+        .parallax-shape-1 {
+            width: 100%; height: 100%;
             background-attachment: fixed;
-            
             background-position: 15% center; 
-            /* Zmuszamy zdjęcie, by pokryło monitor od lewej do prawej krawędzi */
             background-size: 40vw auto; 
-            
             background-repeat: no-repeat;
             clip-path: polygon(15% 0, 100% 0, 100% 85%, 85% 100%, 0 100%, 0 15%);
         }
 
         .parallax-shape-2 {
-            width: 100%;
-            height: 100%;
+            width: 100%; height: 100%;
             background-attachment: fixed;
-            
             background-position: center; 
-            /* Zmuszamy zdjęcie, by pokryło monitor od lewej do prawej krawędzi */
             background-size: 40vw auto; 
-            
             background-repeat: no-repeat;
             clip-path: polygon(15% 0, 100% 0, 100% 85%, 85% 100%, 0 100%, 0 15%);
         }
 
         .parallax-shape-3 {
-            width: 100%;
-            height: 100%;
+            width: 100%; height: 100%;
             background-attachment: fixed;
-            
-            /* Przesuwamy zdjęcie na prawą stronę ekranu (np. 85% od lewej krawędzi) */
             background-position: 85% center; 
-            
             background-size: 35vw auto; 
             background-repeat: no-repeat;
             clip-path: polygon(15% 0, 100% 0, 100% 85%, 85% 100%, 0 100%, 0 15%);
         }
         
+        /* Optymalizacje na urządzenia mobilne */
         @media (max-width: 768px) {
-                    .hero {
-            position: relative;
-            height: calc(100vh - 70px);
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            overflow: hidden;
+            .hero {
+                position: relative;
+                height: calc(100vh - 70px);
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                overflow: hidden;
+            }
+            .hero::before {
+                /* Na telefonach zmniejszamy blur, by procesor się nie "krztusił" */
+                filter: blur(5px);
+            }
+            .features::before {
+                filter: blur(5px);
+            }
+            .parallax-shape-1, .parallax-shape-2, .parallax-shape-3 {
+                background-attachment: scroll; /* Wyłączenie fixed zapobiega czarnym kwadratom podczas scrolla */
+                background-size: cover; 
+            }
         }
-            .parallax-shape-1 {
-                background-attachment: scroll;
-                background-size: cover; 
-            }
-                        .parallax-shape-2 {
-                background-attachment: scroll;
-                background-size: cover; 
-            }
-                        .parallax-shape-3 {
-                background-attachment: scroll;
-                background-size: cover; 
-            }
-        }
+        
         /* Profesjonalna Stopka */
         .main-footer {
             background: #050505;
@@ -399,7 +383,6 @@
 
 <nav class="navbar">
     <div class="nav-container">
-        <!-- Zaktualizowany Switcher o DE -->
         <div class="lang-switcher">
             <button class="lang-btn active" onclick="changeLang('pl')" id="btn-pl">PL</button>
             <button class="lang-btn" onclick="changeLang('en')" id="btn-en">EN</button>
@@ -432,15 +415,14 @@ data-en="Installation of reliable industrial systems for over 20 years."
        data-de="NACH UNTEN SCROLLEN ↓">PRZEWIŃ W DÓŁ ↓</a>
 </section>
 
-
 <section id="oferta" class="features">
     <!-- Kolumna 1 -->
     <div class="feature-column">
         <div class="card-wrapper">
             <a href="Oferta/instalacje_przemyslowe.html" class="card">
                 <div class="card-icon">
-    <span class="material-symbols-outlined">factory</span>
-</div>
+                    <span class="material-symbols-outlined">factory</span>
+                </div>
                 <h2 data-pl="Instalacje przemysłowe" 
                     data-en="Industrial gas installations" 
                     data-de="Industriegasinstallationen">Instalacje przemysłowe</h2>
@@ -467,8 +449,8 @@ data-en="Installation of reliable industrial systems for over 20 years."
         <div class="card-wrapper">
             <a href="Oferta/gazy_techniczne.html" class="card">
                 <div class="card-icon">
-    <span class="material-symbols-outlined">local_shipping</span>
-</div>
+                    <span class="material-symbols-outlined">local_shipping</span>
+                </div>
                 <h2 data-pl="Dystrybucja gazów technicznych" 
                     data-en="Technical gas distribution" 
                     data-de="Vertrieb von technischen Gasen">Dystrybucja gazów technicznych</h2>
@@ -495,8 +477,8 @@ data-en="Installation of reliable industrial systems for over 20 years."
         <div class="card-wrapper">
             <a href="Oferta/mieszalniki_gazow.html" class="card">
                 <div class="card-icon">
-    <span class="material-symbols-outlined">tune</span>
-</div>
+                    <span class="material-symbols-outlined">tune</span>
+                </div>
                 <h2 data-pl="Mieszalniki gazów" 
                     data-en="Gas mixers" 
                     data-de="Gasmischer">Mieszalniki gazów</h2>
@@ -521,10 +503,8 @@ data-en="Installation of reliable industrial systems for over 20 years."
 
 <section class="panel"></section>
 
-<!-- Nowa profesjonalna stopka -->
 <footer class="main-footer">
     <div class="footer-content">
-        <!-- Kolumna 1: O firmie -->
         <div class="footer-col">
             <img src="Logo/logo.webp" alt="Omnis" class="footer-logo">
             <p data-pl="Jesteśmy ekspertami w dziedzinie budowy instalacji oraz dystrybucji gazów technicznych dla nowoczesnego przemysłu." 
@@ -534,16 +514,12 @@ data-en="Installation of reliable industrial systems for over 20 years."
             </p>
         </div>
 
-        <!-- Kolumna 2: Dane firmy -->
         <div class="footer-col">
             <h4 data-pl="Firma" data-en="Company" data-de="Unternehmen">Firma</h4>
             <p>Omnis Anna Kiersznowska-Jąderko</p>
             <p>NIP: 569-157-06-12</p>
-            
-            
         </div>
 
-        <!-- Kolumna 3: Kontakt -->
         <div class="footer-col">
             <h4 data-pl="Kontakt" data-en="Contact" data-de="Kontakt">Kontakt</h4>
             <p>ul. Podgródkowa 59</p>
@@ -552,7 +528,6 @@ data-en="Installation of reliable industrial systems for over 20 years."
             <p>+48 797 181 484</p>
         </div>
 
-        <!-- Kolumna 4: Prawo i Linki -->
         <div class="footer-col">
             <h4 data-pl="Informacje" data-en="Information" data-de="Informationen">Informacje</h4>
             <a href="polityka_prywatnosci.html" data-pl="Polityka Prywatności" data-en="Privacy Policy" data-de="Datenschutzerklärung">Polityka Prywatności</a>
@@ -561,7 +536,6 @@ data-en="Installation of reliable industrial systems for over 20 years."
         </div>
     </div>
 
-    <!-- Prawa autorskie -->
     <div class="footer-bottom">
         <span data-pl="&copy; 2026 Omnis Gazy Techniczne. Wszelkie prawa zastrzeżone." 
               data-en="&copy; 2026 Omnis Technical Gases. All rights reserved." 
@@ -572,30 +546,25 @@ data-en="Installation of reliable industrial systems for over 20 years."
 </footer>
 
 <script>
-    // Zoptymalizowana funkcja tłumaczenia wspierająca pamięć przeglądarki (localStorage)
     function changeLang(lang) {
-        // Zmiana aktywnego przycisku
         document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
         const activeBtn = document.getElementById('btn-' + lang);
         if(activeBtn) activeBtn.classList.add('active');
 
-        // Płynna wymiana tekstu dla WSZYSTKICH elementów posiadających data-pl
         document.querySelectorAll('[data-pl]').forEach(el => {
-            el.style.opacity = 0; // Wygaszanie
+            el.style.opacity = 0; 
             setTimeout(() => {
                 const newText = el.getAttribute('data-' + lang);
                 if(newText) {
                     el.innerText = newText;
                 }
-                el.style.opacity = 1; // Pojawianie
+                el.style.opacity = 1; 
             }, 150);
         });
 
-        // Zapis wyboru do pamięci przeglądarki, aby inne podstrony go pamiętały
         localStorage.setItem('preferredLang', lang);
     }
 
-    // Obsługa burger menu dla telefonów
     const menu = document.querySelector('#mobile-menu');
     const menuLinks = document.querySelector('.nav-menu');
     menu.addEventListener('click', () => {
@@ -603,9 +572,7 @@ data-en="Installation of reliable industrial systems for over 20 years."
         menuLinks.classList.toggle('active');
     });
 
-    // Inicjalizacja przy starcie strony
     window.onload = () => {
-        // Pobiera zapisany język z pamięci lub domyślnie ustawia polski
         const savedLang = localStorage.getItem('preferredLang') || 'pl';
         changeLang(savedLang);
     };
