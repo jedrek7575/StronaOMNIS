@@ -55,7 +55,7 @@
         /* Hero Section */
         .hero {
             position: relative;
-            min-height: 100vh;
+            height: 100vh;
             width: 100%;
             display: flex;
             flex-direction: column;
@@ -308,6 +308,17 @@
         }
         
         @media (max-width: 768px) {
+                    .hero {
+            position: relative;
+            height: calc(100vh - 70px);
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            overflow: hidden;
+        }
             .parallax-shape-1 {
                 background-attachment: scroll;
                 background-size: cover; 
@@ -426,7 +437,7 @@ data-en="Installation of reliable industrial systems for over 20 years."
     <!-- Kolumna 1 -->
     <div class="feature-column">
         <div class="card-wrapper">
-            <a href="instalacje_przemyslowe.html" class="card">
+            <a href="Oferta/instalacje_przemyslowe.html" class="card">
                 <div class="card-icon">
     <span class="material-symbols-outlined">factory</span>
 </div>
@@ -454,7 +465,7 @@ data-en="Installation of reliable industrial systems for over 20 years."
     <!-- Kolumna 2 -->
     <div class="feature-column">
         <div class="card-wrapper">
-            <a href="specjalne.html" class="card">
+            <a href="Oferta/gazy_techniczne.html" class="card">
                 <div class="card-icon">
     <span class="material-symbols-outlined">local_shipping</span>
 </div>
@@ -482,7 +493,7 @@ data-en="Installation of reliable industrial systems for over 20 years."
     <!-- Kolumna 3 -->
     <div class="feature-column">
         <div class="card-wrapper">
-            <a href="mieszalniki_gazow.html" class="card">
+            <a href="Oferta/mieszalniki_gazow.html" class="card">
                 <div class="card-icon">
     <span class="material-symbols-outlined">tune</span>
 </div>

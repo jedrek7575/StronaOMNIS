@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instalacje Przemysłowe i Laboratoryjne - Omnis</title>
+    
+    <!-- Linkowanie zewnętrznych zasobów -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet" />
+
+    <!-- Ikony (przy założeniu że plik jest w folderze Oferta/) -->
+    <link rel="icon" href="../Logo/logo2.webp" type="image/svg+xml">
+    <link rel="icon" href="../Logo/logo2.webp" sizes="any">
+    <link rel="apple-touch-icon" href="../Logo/logo2.webp">
+    
+    <style>
+        :root {
+            --bg-color: #0a0a0a;
+            --text-color: #ffffff;
+            --accent-purple: #4b0082;
+            --accent-light: #8a2be2;
+            --card-bg: #1a1a1a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* NAVBAR (Identyczny jak w index.html) */
+        .navbar {
+            position: fixed;
+            top: 0; left: 0; width: 100%;
+            background: rgba(10, 10, 10, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(138, 43, 226, 0.2);
+            z-index: 100;
+            padding: 15px 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .lang-switcher { display: flex; gap: 10px; }
+        .lang-btn {
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.2);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .lang-btn.active, .lang-btn:hover { background: var(--accent-light); border-color: var(--accent-light); }
+        
+        .nav-menu { display: flex; gap: 30px; list-style: none; }
+        .nav-links { color: white; text-decoration: none; font-weight: 700; font-size: 0.9rem; transition: 0.3s; }
+        .nav-links:hover { color: var(--accent-light); }
+
+        .menu-toggle { display: none; flex-direction: column; cursor: pointer; gap: 5px; }
+        .menu-toggle .bar { width: 25px; height: 3px; background: white; transition: 0.3s; }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: absolute; top: 70px; right: -100%; width: 100%; height: 100vh;
+                background: #0a0a0a; flex-direction: column; align-items: center; padding-top: 50px; transition: 0.3s;
+            }
+            .nav-menu.active { right: 0; }
+            .menu-toggle { display: flex; }
+        }
+
+        /* HERO PODSTRONY */
+        .sub-hero {
+            position: relative;
+            height: 60vh;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            overflow: hidden;
+            margin-top: 60px;
+        }
+
+        .sub-hero::before {
+            content: "";
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url('../Grafiki/instalacje.webp'); /* Zastąp własnym zdjęciem */
+            background-size: cover; background-position: center;
+            filter: blur(8px) brightness(0.3);
+            transform: scale(1.1);
+            z-index: 1;
+        }
+
+        .sub-hero-content {
+            position: relative; z-index: 2; width: 100%; max-width: 800px; padding: 0 20px;
+        }
+
+        .sub-hero h1 {
+            font-size: 3rem; font-weight: 900; margin-bottom: 20px;
+            background: linear-gradient(to right, #fff, var(--accent-light));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            transition: opacity 0.3s ease;
+        }
+
+        .sub-hero p {
+            font-size: 1.1rem; color: #ccc; font-weight: 300; transition: opacity 0.3s ease;
+        }
+
+        /* SEKCJE Z TREŚCIĄ (Naprzemienny układ) */
+        .content-section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 80px;
+        }
+
+        .content-row {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .content-row.reverse {
+            flex-direction: row-reverse;
+        }
+
+        .text-box {
+            flex: 1;
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 24px 0 24px 0;
+            border: 1px solid rgba(138, 43, 226, 0.2);
+            position: relative;
+        }
+
+        .text-box::before {
+            content: ''; position: absolute; top: -2px; left: -2px; right: -2px; bottom: -2px;
+            background: linear-gradient(45deg, var(--accent-purple), transparent, var(--accent-light));
+            z-index: -1; border-radius: 25px 0 25px 0;
+        }
+
+        .icon-header {
+            display: flex; align-items: center; gap: 15px; margin-bottom: 20px;
+        }
+
+        .icon-header .material-symbols-outlined {
+            color: var(--accent-light); font-size: 32px;
+            background: rgba(138, 43, 226, 0.1); padding: 10px; border-radius: 12px 0 12px 0;
+            border: 1px solid rgba(138, 43, 226, 0.4);
+        }
+
+        .text-box h2 { font-size: 1.8rem; font-weight: 900; transition: opacity 0.3s ease; }
+        .text-box p { color: #aaa; font-size: 1rem; margin-top: 15px; transition: opacity 0.3s ease; }
+
+        /* Miejsca na zdjęcia */
+        .img-box {
+            flex: 1;
+            border-radius: 24px 0 24px 0;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            position: relative;
+        }
+
+        .img-box::after {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            border: 2px solid rgba(138, 43, 226, 0.3); border-radius: 24px 0 24px 0; pointer-events: none;
+        }
+
+        .img-box img {
+            width: 100%; height: 100%; object-fit: cover; display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .img-box:hover img {
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 900px) {
+            .content-row, .content-row.reverse { flex-direction: column; gap: 30px; }
+            .img-box { width: 100%; max-height: 400px; }
+            .sub-hero h1 { font-size: 2.2rem; }
+        }
+
+        /* STOPKA */
+        .main-footer {
+            background: #050505; border-top: 1px solid rgba(138, 43, 226, 0.2);
+            padding: 80px 20px 20px; font-size: 0.9rem; color: #888;
+        }
+        .footer-content {
+            max-width: 1200px; margin: 0 auto; display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 50px;
+        }
+        .footer-logo { width: 180px; margin-bottom: 20px; }
+        .footer-col h4 { color: white; margin-bottom: 20px; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px; }
+        .footer-col p { margin-bottom: 10px; font-weight: 400; }
+        .footer-col a { display: block; color: #888; text-decoration: none; margin-bottom: 10px; transition: color 0.3s ease; }
+        .footer-col a:hover { color: var(--accent-light); }
+        .footer-bottom { text-align: center; border-top: 1px solid #1a1a1a; padding-top: 25px; font-size: 0.8rem; }
+    </style>
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="nav-container">
+        <div class="lang-switcher">
+            <button class="lang-btn active" onclick="changeLang('pl')" id="btn-pl">PL</button>
+            <button class="lang-btn" onclick="changeLang('en')" id="btn-en">EN</button>
+            <button class="lang-btn" onclick="changeLang('de')" id="btn-de">DE</button>
+        </div>
+        
+        <div class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+        </div>
+
+        <ul class="nav-menu">
+            <li><a href="../index.html" class="nav-links" data-pl="STRONA GŁÓWNA" data-en="HOME" data-de="STARTSEITE">STRONA GŁÓWNA</a></li>
+            <li><a href="../o_nas.html" class="nav-links" data-pl="O NAS" data-en="ABOUT US" data-de="ÜBER UNS">O NAS</a></li>
+            <li><a href="../kontakt.html" class="nav-links" data-pl="KONTAKT" data-en="CONTACT" data-de="KONTAKT">KONTAKT</a></li>
+        </ul>
+    </div>
+</nav>
+
+<header class="sub-hero">
+    <div class="sub-hero-content">
+        <h1 data-pl="Profesjonalne Instalacje Przemysłowe i&nbsp;Laboratoryjne" 
+            data-en="Professional Industrial and&nbsp;Laboratory Installations" 
+            data-de="Professionelle Industrie- und&nbsp;Laboranlagen">Profesjonalne Instalacje Przemysłowe i Laboratoryjne</h1>
+            
+        <p data-pl="Budujemy niezawodne systemy dla przemysłu i&nbsp;medycyny. Ponad dwie dekady doświadczenia - nieprzerwanie od&nbsp;2004 roku." 
+           data-en="We build reliable systems for industry and&nbsp;medicine. Over two decades of&nbsp;experience - continuously since June 9, 2004." 
+           data-de="Wir bauen zuverlässige Systeme für Industrie und&nbsp;Medizin. Über zwei Jahrzehnte Erfahrung - ununterbrochen seit dem 9. Juni 2004.">Budujemy niezawodne systemy dla przemysłu i medycyny. Ponad dwie dekady doświadczenia - nieprzerwanie od 2004 roku.</p>
+    </div>
+</header>
+
+<main class="content-section">
+    <!-- Blok 1: Gazy spawalnicze / przemysłowe -->
+    <div class="content-row">
+        <div class="text-box">
+            <div class="icon-header">
+                <span class="material-symbols-outlined">precision_manufacturing</span>
+                <h2 data-pl="Gazy techniczne i&nbsp;spawalnicze" 
+                    data-en="Technical and&nbsp;welding gases" 
+                    data-de="Technische Gase und&nbsp;Schweißgase">Gazy techniczne i spawalnicze</h2>
+            </div>
+            <p data-pl="Zajmujemy się kompleksową budową i&nbsp;wykonawstwem systemów m.in. dla tlenu, acetylenu, dwutlenku węgla, amoniaku, sprężonego powietrza oraz specjalistycznych mieszanek spawalniczych. Wykorzystujemy najwyższej klasy materiały, takie jak miedź oraz stal węglowa i&nbsp;nierdzewna." 
+               data-en="We provide comprehensive construction and&nbsp;execution of&nbsp;systems for oxygen, acetylene, carbon dioxide, ammonia, compressed air, and&nbsp;specialized welding mixtures. We use premium materials such as&nbsp;copper, carbon steel, and&nbsp;stainless steel." 
+               data-de="Wir bieten den umfassenden Bau und&nbsp;die Ausführung von&nbsp;Systemen für Sauerstoff, Acetylen, Kohlendioxid, Ammoniak, Druckluft und&nbsp;spezielle Schweißmischungen an. Wir verwenden erstklassige Materialien wie Kupfer, Kohlenstoffstahl und&nbsp;Edelstahl.">
+               Zajmujemy się kompleksową budową i wykonawstwem systemów m.in. dla tlenu, acetylenu, dwutlenku węgla, amoniaku, sprężonego powietrza oraz specjalistycznych mieszanek spawalniczych. Wykorzystujemy najwyższej klasy materiały, takie jak miedź oraz stal węglowa i nierdzewna.
+            </p>
+            <p data-pl="Nasi specjaliści - certyfikowani monterzy i&nbsp;spawacze (uprawnienia WPS i&nbsp;BPS) - gwarantują bezawaryjną i&nbsp;bezpieczną eksploatację. Projektujemy instalacje spawalnicze (TIG, MIG/MAG) dostarczające gazy palne i&nbsp;osłonowe, które są fundamentem produkcji w&nbsp;stoczniach, warsztatach i&nbsp;parkach maszynowych. Oferujemy również profesjonalny montaż zbiorników kriogenicznych." 
+               data-en="Our specialists - certified fitters and&nbsp;welders (WPS and&nbsp;BPS qualifications) - guarantee failure-free and&nbsp;safe operation. We design welding installations (TIG, MIG/MAG) supplying combustible and&nbsp;shielding gases, which are the foundation of&nbsp;production in&nbsp;shipyards, workshops, and&nbsp;machine parks. We also offer professional installation of&nbsp;cryogenic tanks." 
+               data-de="Unsere Spezialisten - zertifizierte Monteure und&nbsp;Schweißer (WPS- und&nbsp;BPS-Qualifikationen) - garantieren einen störungsfreien und&nbsp;sicheren Betrieb. Wir entwerfen Schweißanlagen (WIG, MIG/MAG), die Brenn- und&nbsp;Schutzgase liefern, die die Grundlage der&nbsp;Produktion in&nbsp;Werften, Werkstätten und&nbsp;Maschinenparks bilden. Wir bieten auch die professionelle Installation von&nbsp;Kryotanks an.">
+               Nasi specjaliści - certyfikowani monterzy i spawacze (uprawnienia WPS i BPS) - gwarantują bezawaryjną i bezpieczną eksploatację. Projektujemy instalacje spawalnicze (TIG, MIG/MAG) dostarczające gazy palne i osłonowe, które są fundamentem produkcji w stoczniach, warsztatach i parkach maszynowych. Oferujemy również profesjonalny montaż zbiorników kriogenicznych.
+            </p>
+        </div>
+        <div class="img-box">
+            <!-- MIEJSCE NA ZDJĘCIE 1 -->
+            <img src="../Grafiki/spawacz.webp" alt="Instalacje gazów spawalniczych">
+        </div>
+    </div>
+
+    <!-- Blok 2: Gazy laboratoryjne i medyczne -->
+    <div class="content-row reverse">
+        <div class="text-box">
+            <div class="icon-header">
+                <span class="material-symbols-outlined">science</span>
+                <h2 data-pl="Instalacje laboratoryjne i&nbsp;medyczne" 
+                    data-en="Laboratory and&nbsp;medical installations" 
+                    data-de="Labor- und&nbsp;medizinische Anlagen">Instalacje laboratoryjne i medyczne</h2>
+            </div>
+            <p data-pl="Projektujemy i&nbsp;wdrażamy wysoce precyzyjne systemy przesyłu azotu, helu, argonu. Zapewniamy kompletną infrastrukturę: od&nbsp;generatorów, sprężarek i&nbsp;stanowisk butlowych, po&nbsp;rurociągi, reduktory oraz armaturę odcinającą i&nbsp;pomiarową." 
+               data-en="We design and&nbsp;implement highly precise transmission systems for nitrogen, helium, and&nbsp;argon. We provide complete infrastructure: from generators, compressors, and&nbsp;cylinder stations to&nbsp;pipelines, regulators, and&nbsp;measuring fittings." 
+               data-de="Wir entwerfen und&nbsp;implementieren hochpräzise Übertragungssysteme für Stickstoff, Helium und&nbsp;Argon. Wir bieten eine komplette Infrastruktur: von&nbsp;Generatoren, Kompressoren und&nbsp;Flaschenstationen bis&nbsp;hin zu&nbsp;Rohrleitungen, Druckminderern und&nbsp;Messarmaturen.">
+               Projektujemy i wdrażamy wysoce precyzyjne systemy przesyłu azotu, helu, argonu. Zapewniamy kompletną infrastrukturę: od generatorów, sprężarek i stanowisk butlowych, po rurociągi, reduktory oraz armaturę odcinającą i pomiarową.
+            </p>
+            <p data-pl="Nasze zaawansowane technologicznie rozwiązania wspierają nie tylko nowoczesne laboratoria, ale przede wszystkim ratują życie w&nbsp;medycynie. Specjalizujemy się w&nbsp;kluczowych instalacjach tlenowych, niezbędnych na&nbsp;oddziałach anestezjologii, przy resuscytacji, utrzymaniu organów do&nbsp;transplantacji, a&nbsp;także w&nbsp;dynamicznie rozwijającej się tlenoterapii w&nbsp;komorach hiperbarycznych." 
+               data-en="Our technologically advanced solutions support not only modern laboratories but, above all, save lives in&nbsp;medicine. We specialize in&nbsp;crucial oxygen installations, essential in&nbsp;anesthesiology departments, for resuscitation, maintaining organs for&nbsp;transplantation, and&nbsp;in dynamically developing hyperbaric chamber oxygen therapy." 
+               data-de="Unsere technologisch fortschrittlichen Lösungen unterstützen nicht nur moderne Labore, sondern retten vor&nbsp;allem Leben in&nbsp;der Medizin. Wir sind spezialisiert auf&nbsp;entscheidende Sauerstoffanlagen, die in&nbsp;der Anästhesiologie, bei&nbsp;der Wiederbelebung, der&nbsp;Erhaltung von&nbsp;Organen für&nbsp;Transplantationen und&nbsp;in der&nbsp;sich dynamisch entwickelnden hyperbaren Sauerstofftherapie unerlässlich sind.">
+               Nasze zaawansowane technologicznie rozwiązania wspierają nie tylko nowoczesne laboratoria, ale przede wszystkim ratują życie w medycynie. Specjalizujemy się w kluczowych instalacjach tlenowych, niezbędnych na oddziałach anestezjologii, przy resuscytacji, utrzymaniu organów do transplantacji, a także w dynamicznie rozwijającej się tlenoterapii w komorach hiperbarycznych.
+            </p>
+        </div>
+        <div class="img-box">
+            <!-- MIEJSCE NA ZDJĘCIE 2 -->
+            <img src="../Grafiki/medycyna.webp" alt="Instalacje gazów medycznych i laboratoryjnych">
+        </div>
+    </div>
+
+    <!-- Blok 3: Zasięg ogólnopolski -->
+    <div class="content-row">
+        <div class="text-box">
+            <div class="icon-header">
+                <span class="material-symbols-outlined">public</span>
+                <h2 data-pl="Realizacje w&nbsp;całej Polsce" 
+                    data-en="Projects across Poland" 
+                    data-de="Projekte in&nbsp;ganz Polen">Realizacje w całej Polsce</h2>
+            </div>
+            <p data-pl="Od samego początku istnienia firmy w&nbsp;2004 roku naszym priorytetem jest najwyższa jakość, niezależnie od&nbsp;lokalizacji. Mimo że&nbsp;nasza siedziba mieści się na&nbsp;Śląsku, działamy i&nbsp;dojeżdżamy do&nbsp;klientów na&nbsp;terenie całego kraju." 
+               data-en="Since the&nbsp;company's inception in&nbsp;2004, our priority has been top quality, regardless of&nbsp;location. Even though our headquarters is&nbsp;located in&nbsp;Silesia, we operate and&nbsp;travel to&nbsp;clients throughout the&nbsp;country." 
+               data-de="Seit der&nbsp;Gründung des&nbsp;Unternehmens im&nbsp;Jahr 2004 ist unsere Priorität höchste Qualität, unabhängig vom&nbsp;Standort. Obwohl sich unser Hauptsitz in&nbsp;Schlesien befindet, sind wir bundesweit tätig und&nbsp;reisen zu&nbsp;Kunden im&nbsp;ganzen Land.">
+               Od samego początku istnienia firmy w 2004 roku naszym priorytetem jest najwyższa jakość, niezależnie od lokalizacji. Mimo że nasza siedziba mieści się na Śląsku, działamy i dojeżdżamy do klientów na terenie całego kraju.
+            </p>
+            <p data-pl="Jeśli planujesz nową inwestycję przemysłową, modernizację zakładu lub budowę infrastruktury medycznej - zapraszamy do&nbsp;współpracy. Zapewniamy profesjonalne doradztwo techniczne i&nbsp;gwarantujemy terminowe oddanie sprawnie działającej instalacji." 
+               data-en="If you are planning a&nbsp;new industrial investment, plant modernization, or&nbsp;medical infrastructure construction - we invite you to&nbsp;cooperate. We provide professional technical advice and&nbsp;guarantee the&nbsp;timely delivery of&nbsp;a fully functioning installation." 
+               data-de="Wenn Sie eine neue Industrieinvestition, eine Anlagenmodernisierung oder den&nbsp;Bau medizinischer Infrastruktur planen - laden wir Sie zur&nbsp;Zusammenarbeit ein. Wir bieten professionelle technische Beratung und&nbsp;garantieren die&nbsp;fristgerechte Übergabe einer voll funktionsfähigen Anlage.">
+               Jeśli planujesz nową inwestycję przemysłową, modernizację zakładu lub budowę infrastruktury medycznej - zapraszamy do współpracy. Zapewniamy profesjonalne doradztwo techniczne i gwarantujemy terminowe oddanie sprawnie działającej instalacji.
+            </p>
+        </div>
+        <div class="img-box">
+            <!-- MIEJSCE NA ZDJĘCIE 3 -->
+            <img src="../Grafiki/polska.webp" alt="Działamy w całej Polsce">
+        </div>
+    </div>
+</main>
+
+<footer class="main-footer">
+    <div class="footer-content">
+        <div class="footer-col">
+            <img src="../Logo/logo.webp" alt="Omnis" class="footer-logo">
+            <p data-pl="Jesteśmy ekspertami w&nbsp;dziedzinie budowy instalacji oraz dystrybucji gazów technicznych dla nowoczesnego przemysłu." 
+               data-en="We are experts in&nbsp;the installation and&nbsp;distribution of&nbsp;technical gases for&nbsp;modern industry." 
+               data-de="Wir sind Experten für&nbsp;die Installation und&nbsp;den Vertrieb von&nbsp;technischen Gasen für&nbsp;die moderne Industrie.">
+               Jesteśmy ekspertami w dziedzinie budowy instalacji oraz dystrybucji gazów technicznych dla nowoczesnego przemysłu.
+            </p>
+        </div>
+
+        <div class="footer-col">
+            <h4 data-pl="Firma" data-en="Company" data-de="Unternehmen">Firma</h4>
+            <p>Omnis Anna Kiersznowska-Jąderko</p>
+            <p>NIP: 569-157-06-12</p>
+        </div>
+
+        <div class="footer-col">
+            <h4 data-pl="Kontakt" data-en="Contact" data-de="Kontakt">Kontakt</h4>
+            <p>ul. Podgródkowa 59</p>
+            <p>42-470 Dziewki</p>
+            <p style="margin-top: 10px;">biuro@omnis.org.pl</p>
+            <p>+48 797 181 484</p>
+        </div>
+
+        <div class="footer-col">
+            <h4 data-pl="Informacje" data-en="Information" data-de="Informationen">Informacje</h4>
+            <a href="../polityka_prywatnosci.html" data-pl="Polityka Prywatności" data-en="Privacy Policy" data-de="Datenschutzerklärung">Polityka Prywatności</a>
+            <a href="../regulamin.html" data-pl="Regulamin" data-en="Terms of Service" data-de="Nutzungsbedingungen">Regulamin</a>
+            <a href="../o_nas.html" data-pl="O nas" data-en="About Us" data-de="Über uns">O nas</a>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <span data-pl="&copy; 2026 Omnis Gazy Techniczne. Wszelkie prawa zastrzeżone." 
+              data-en="&copy; 2026 Omnis Technical Gases. All rights reserved." 
+              data-de="&copy; 2026 Omnis Technische Gase. Alle Rechte vorbehalten.">
+              &copy; 2026 Omnis Gazy Techniczne. Wszelkie prawa zastrzeżone.
+        </span>
+    </div>
+</footer>
+<script>
+    // Zoptymalizowana funkcja tłumaczenia wspierająca pamięć przeglądarki (localStorage)
+    function changeLang(lang) {
+        // Zmiana aktywnego przycisku
+        document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+        const activeBtn = document.getElementById('btn-' + lang);
+        if(activeBtn) activeBtn.classList.add('active');
+
+        // Płynna wymiana tekstu dla WSZYSTKICH elementów posiadających data-pl
+        document.querySelectorAll('[data-pl]').forEach(el => {
+            el.style.opacity = 0; // Wygaszanie
+            setTimeout(() => {
+                const newText = el.getAttribute('data-' + lang);
+                if(newText) {
+                    el.innerText = newText;
+                }
+                el.style.opacity = 1; // Pojawianie
+            }, 150);
+        });
+
+        // Zapis wyboru do pamięci przeglądarki, aby inne podstrony go pamiętały
+        localStorage.setItem('preferredLang', lang);
+    }
+
+    // Obsługa burger menu dla telefonów
+    const menu = document.querySelector('#mobile-menu');
+    const menuLinks = document.querySelector('.nav-menu');
+    menu.addEventListener('click', () => {
+        menu.classList.toggle('is-active');
+        menuLinks.classList.toggle('active');
+    });
+
+    // Inicjalizacja przy starcie strony
+    window.onload = () => {
+        // Pobiera zapisany język z pamięci lub domyślnie ustawia polski
+        const savedLang = localStorage.getItem('preferredLang') || 'pl';
+        changeLang(savedLang);
+    };
+</script>
+
+</body>
+</html>

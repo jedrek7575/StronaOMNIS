@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dystrybucja Gazów Technicznych - Omnis</title>
+    
+    <!-- Linkowanie zewnętrznych zasobów -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet" />
+
+    <!-- Ikony (przy założeniu że plik jest w folderze Oferta/) -->
+    <link rel="icon" href="../Logo/logo2.webp" type="image/svg+xml">
+    <link rel="icon" href="../Logo/logo2.webp" sizes="any">
+    <link rel="apple-touch-icon" href="../Logo/logo2.webp">
+    
+    <style>
+        :root {
+            --bg-color: #0a0a0a;
+            --text-color: #ffffff;
+            --accent-purple: #4b0082;
+            --accent-light: #8a2be2;
+            --card-bg: #1a1a1a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* NAVBAR (Identyczny jak w index.html) */
+        .navbar {
+            position: fixed;
+            top: 0; left: 0; width: 100%;
+            background: rgba(10, 10, 10, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(138, 43, 226, 0.2);
+            z-index: 100;
+            padding: 15px 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .lang-switcher { display: flex; gap: 10px; }
+        .lang-btn {
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.2);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .lang-btn.active, .lang-btn:hover { background: var(--accent-light); border-color: var(--accent-light); }
+        
+        .nav-menu { display: flex; gap: 30px; list-style: none; }
+        .nav-links { color: white; text-decoration: none; font-weight: 700; font-size: 0.9rem; transition: 0.3s; }
+        .nav-links:hover { color: var(--accent-light); }
+
+        .menu-toggle { display: none; flex-direction: column; cursor: pointer; gap: 5px; }
+        .menu-toggle .bar { width: 25px; height: 3px; background: white; transition: 0.3s; }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: absolute; top: 70px; right: -100%; width: 100%; height: 100vh;
+                background: #0a0a0a; flex-direction: column; align-items: center; padding-top: 50px; transition: 0.3s;
+            }
+            .nav-menu.active { right: 0; }
+            .menu-toggle { display: flex; }
+        }
+
+        /* HERO PODSTRONY */
+        .sub-hero {
+            position: relative;
+            height: 60vh;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            overflow: hidden;
+            margin-top: 60px;
+        }
+
+        .sub-hero::before {
+            content: "";
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url('../Grafiki/cysterna.webp'); /* Zastąp własnym zdjęciem */
+            background-size: cover; background-position: center;
+            filter: blur(8px) brightness(0.3);
+            transform: scale(1.1);
+            z-index: 1;
+        }
+
+        .sub-hero-content {
+            position: relative; z-index: 2; width: 100%; max-width: 800px; padding: 0 20px;
+        }
+
+        .sub-hero h1 {
+            font-size: 3rem; font-weight: 900; margin-bottom: 20px;
+            background: linear-gradient(to right, #fff, var(--accent-light));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            transition: opacity 0.3s ease;
+        }
+
+        .sub-hero p {
+            font-size: 1.1rem; color: #ccc; font-weight: 300; transition: opacity 0.3s ease;
+        }
+
+        /* SEKCJE Z TREŚCIĄ (Naprzemienny układ) */
+        .content-section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 80px;
+        }
+
+        .content-row {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .content-row.reverse {
+            flex-direction: row-reverse;
+        }
+
+        .text-box {
+            flex: 1;
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 24px 0 24px 0;
+            border: 1px solid rgba(138, 43, 226, 0.2);
+            position: relative;
+        }
+
+        .text-box::before {
+            content: ''; position: absolute; top: -2px; left: -2px; right: -2px; bottom: -2px;
+            background: linear-gradient(45deg, var(--accent-purple), transparent, var(--accent-light));
+            z-index: -1; border-radius: 25px 0 25px 0;
+        }
+
+        .icon-header {
+            display: flex; align-items: center; gap: 15px; margin-bottom: 20px;
+        }
+
+        .icon-header .material-symbols-outlined {
+            color: var(--accent-light); font-size: 32px;
+            background: rgba(138, 43, 226, 0.1); padding: 10px; border-radius: 12px 0 12px 0;
+            border: 1px solid rgba(138, 43, 226, 0.4);
+        }
+
+        .text-box h2 { font-size: 1.8rem; font-weight: 900; transition: opacity 0.3s ease; }
+        .text-box p { color: #aaa; font-size: 1rem; margin-top: 15px; transition: opacity 0.3s ease; }
+
+        /* Miejsca na zdjęcia */
+        .img-box {
+            flex: 1;
+            border-radius: 24px 0 24px 0;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            position: relative;
+        }
+
+        .img-box::after {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            border: 2px solid rgba(138, 43, 226, 0.3); border-radius: 24px 0 24px 0; pointer-events: none;
+        }
+
+        .img-box img {
+            width: 100%; height: 100%; object-fit: cover; display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .img-box:hover img {
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 900px) {
+            .content-row, .content-row.reverse { flex-direction: column; gap: 30px; }
+            .img-box { width: 100%; max-height: 400px; }
+            .sub-hero h1 { font-size: 2.2rem; }
+        }
+
+        /* STOPKA */
+        .main-footer {
+            background: #050505; border-top: 1px solid rgba(138, 43, 226, 0.2);
+            padding: 80px 20px 20px; font-size: 0.9rem; color: #888;
+        }
+        .footer-content {
+            max-width: 1200px; margin: 0 auto; display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 50px;
+        }
+        .footer-logo { width: 180px; margin-bottom: 20px; }
+        .footer-col h4 { color: white; margin-bottom: 20px; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px; }
+        .footer-col p { margin-bottom: 10px; font-weight: 400; }
+        .footer-col a { display: block; color: #888; text-decoration: none; margin-bottom: 10px; transition: color 0.3s ease; }
+        .footer-col a:hover { color: var(--accent-light); }
+        .footer-bottom { text-align: center; border-top: 1px solid #1a1a1a; padding-top: 25px; font-size: 0.8rem; }
+    </style>
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="nav-container">
+        <div class="lang-switcher">
+            <button class="lang-btn active" onclick="changeLang('pl')" id="btn-pl">PL</button>
+            <button class="lang-btn" onclick="changeLang('en')" id="btn-en">EN</button>
+            <button class="lang-btn" onclick="changeLang('de')" id="btn-de">DE</button>
+        </div>
+        
+        <div class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+        </div>
+
+        <ul class="nav-menu">
+            <li><a href="../index.html" class="nav-links" data-pl="STRONA GŁÓWNA" data-en="HOME" data-de="STARTSEITE">STRONA GŁÓWNA</a></li>
+            <li><a href="../o_nas.html" class="nav-links" data-pl="O NAS" data-en="ABOUT US" data-de="ÜBER UNS">O NAS</a></li>
+            <li><a href="../kontakt.html" class="nav-links" data-pl="KONTAKT" data-en="CONTACT" data-de="KONTAKT">KONTAKT</a></li>
+        </ul>
+    </div>
+</nav>
+
+<header class="sub-hero">
+    <div class="sub-hero-content">
+        <h1 data-pl="Dystrybucja Gazów Technicznych i&nbsp;Spożywczych" 
+            data-en="Distribution of&nbsp;Technical and&nbsp;Food Gases" 
+            data-de="Vertrieb von&nbsp;technischen und&nbsp;Lebensmittelgasen">Dystrybucja Gazów Technicznych i&nbsp;Spożywczych</h1>
+            
+        <p data-pl="Niezawodne dostawy dla&nbsp;przemysłu, medycyny i&nbsp;gastronomii. Jakość i&nbsp;bezpieczeństwo na&nbsp;najwyższym poziomie." 
+           data-en="Reliable deliveries for&nbsp;industry, medicine, and&nbsp;gastronomy. Quality and&nbsp;safety at&nbsp;the highest level." 
+           data-de="Zuverlässige Lieferungen für&nbsp;Industrie, Medizin und&nbsp;Gastronomie. Qualität und&nbsp;Sicherheit auf&nbsp;höchstem Niveau.">Niezawodne dostawy dla&nbsp;przemysłu, medycyny i&nbsp;gastronomii. Jakość i&nbsp;bezpieczeństwo na&nbsp;najwyższym poziomie.</p>
+    </div>
+</header>
+
+<main class="content-section">
+    <!-- Blok 1: Gazy spożywcze i medyczne -->
+    <div class="content-row">
+        <div class="text-box">
+            <div class="icon-header">
+                <span class="material-symbols-outlined">health_and_safety</span>
+                <h2 data-pl="Przemysł spożywczy i&nbsp;medyczny" 
+                    data-en="Food and&nbsp;medical industry" 
+                    data-de="Lebensmittel- und&nbsp;Medizinindustrie">Przemysł spożywczy i&nbsp;medyczny</h2>
+            </div>
+            <p data-pl="Dostarczamy gazy spełniające rygorystyczne normy bezpieczeństwa żywności, zgodnie z&nbsp;obowiązującymi przepisami prawnymi. Nasze produkty idealnie sprawdzają się do&nbsp;pakowania w&nbsp;atmosferze ochronnej oraz nasycania napojów. Butle posiadają odpowiednie oznaczenia barwne i&nbsp;czytelne etykiety, co gwarantuje najwyższy standard higieny. Jako pionierzy na&nbsp;rynku stosujemy zaawansowane systemy suszenia i&nbsp;sterylizacji wnętrza butli (technologia DRY-VAP), co jest kluczowe w&nbsp;branży spożywczej i&nbsp;medycznej." 
+               data-en="We provide gases meeting rigorous food safety standards, in&nbsp;accordance with current legal regulations. Our products are ideal for&nbsp;protective atmosphere packaging and&nbsp;beverage saturation. Cylinders have appropriate color codings and&nbsp;clear labels, which guarantees the&nbsp;highest hygiene standard. As pioneers on&nbsp;the market, we use advanced cylinder drying and&nbsp;sterilization systems (DRY-VAP technology), which is crucial in&nbsp;the food and&nbsp;medical industries." 
+               data-de="Wir liefern Gase, die strengen Lebensmittelsicherheitsstandards entsprechen, in&nbsp;Übereinstimmung mit den&nbsp;geltenden gesetzlichen Vorschriften. Unsere Produkte eignen sich ideal für&nbsp;die Verpackung unter Schutzatmosphäre und&nbsp;die Sättigung von&nbsp;Getränken. Die Zylinder haben entsprechende Farbcodierungen und&nbsp;klare Etiketten, was den&nbsp;höchsten Hygienestandard garantiert. Als Pioniere auf&nbsp;dem Markt verwenden wir fortschrittliche Zylindertrocknungs- und&nbsp;Sterilisationssysteme (DRY-VAP-Technologie), was in&nbsp;der Lebensmittel- und&nbsp;Medizinindustrie von&nbsp;entscheidender Bedeutung ist.">
+               Dostarczamy gazy spełniające rygorystyczne normy bezpieczeństwa żywności, zgodnie z&nbsp;obowiązującymi przepisami prawnymi. Nasze produkty idealnie sprawdzają się do&nbsp;pakowania w&nbsp;atmosferze ochronnej oraz nasycania napojów. Butle posiadają odpowiednie oznaczenia barwne i&nbsp;czytelne etykiety, co gwarantuje najwyższy standard higieny. Jako pionierzy na&nbsp;rynku stosujemy zaawansowane systemy suszenia i&nbsp;sterylizacji wnętrza butli (technologia DRY-VAP), co jest kluczowe w&nbsp;branży spożywczej i&nbsp;medycznej.
+            </p>
+            <p data-pl="Zaopatrujemy również szpitale, kliniki i&nbsp;gabinety prywatne. Specjalizujemy się w&nbsp;dostawach tlenu medycznego, medycznego podtlenku azotu oraz dwutlenku węgla, dbając o&nbsp;bezwzględne bezpieczeństwo i&nbsp;sterylność na&nbsp;każdym etapie dystrybucji." 
+               data-en="We also supply hospitals, clinics, and&nbsp;private practices. We specialize in&nbsp;the delivery of&nbsp;medical oxygen, medical nitrous oxide, and&nbsp;carbon dioxide, ensuring absolute safety and&nbsp;sterility at&nbsp;every stage of&nbsp;distribution." 
+               data-de="Wir beliefern auch Krankenhäuser, Kliniken und&nbsp;Privatpraxen. Wir sind spezialisiert auf&nbsp;die Lieferung von&nbsp;medizinischem Sauerstoff, medizinischem Lachgas und&nbsp;Kohlendioxid und&nbsp;gewährleisten absolute Sicherheit und&nbsp;Sterilität in&nbsp;jeder Phase der&nbsp;Verteilung.">
+               Zaopatrujemy również szpitale, kliniki i&nbsp;gabinety prywatne. Specjalizujemy się w&nbsp;dostawach tlenu medycznego, medycznego podtlenku azotu oraz dwutlenku węgla, dbając o&nbsp;bezwzględne bezpieczeństwo i&nbsp;sterylność na&nbsp;każdym etapie dystrybucji.
+            </p>
+        </div>
+        <div class="img-box">
+            <!-- MIEJSCE NA ZDJĘCIE 1 -->
+            <img src="../Grafiki/spozywczy.webp" alt="Gazy spożywcze i medyczne">
+        </div>
+    </div>
+
+    <!-- Blok 2: Spawalnictwo i przemysł -->
+    <div class="content-row reverse">
+        <div class="text-box">
+            <div class="icon-header">
+                <span class="material-symbols-outlined">construction</span>
+                <h2 data-pl="Spawalnictwo, chemia i&nbsp;konstrukcje stalowe" 
+                    data-en="Welding, chemistry, and&nbsp;steel structures" 
+                    data-de="Schweißen, Chemie und&nbsp;Stahlkonstruktionen">Spawalnictwo, chemia i&nbsp;konstrukcje stalowe</h2>
+            </div>
+            <p data-pl="Jesteśmy sprawdzonym partnerem dla&nbsp;przedsiębiorstw zajmujących się obróbką metali, budową konstrukcji stalowych oraz dla&nbsp;przemysłu chemicznego i&nbsp;hutniczego. Nasza wiedza pozwala nam doradzać klientom w&nbsp;optymalizacji procesów produkcyjnych, co przekłada się na&nbsp;redukcję kosztów i&nbsp;wzrost wydajności." 
+               data-en="We are a&nbsp;proven partner for&nbsp;companies involved in&nbsp;metalworking, steel structure construction, and&nbsp;for the&nbsp;chemical and&nbsp;metallurgical industries. Our knowledge allows us to&nbsp;advise clients on&nbsp;optimizing production processes, which translates into cost reduction and&nbsp;increased efficiency." 
+               data-de="Wir sind ein bewährter Partner für&nbsp;Unternehmen der&nbsp;Metallverarbeitung, des&nbsp;Stahlbaus sowie für&nbsp;die Chemie- und&nbsp;Hüttenindustrie. Unser Wissen ermöglicht es uns, Kunden bei&nbsp;der Optimierung von&nbsp;Produktionsprozessen zu&nbsp;beraten, was zu&nbsp;Kostensenkungen und&nbsp;gesteigerter Effizienz führt.">
+               Jesteśmy sprawdzonym partnerem dla&nbsp;przedsiębiorstw zajmujących się obróbką metali, budową konstrukcji stalowych oraz dla&nbsp;przemysłu chemicznego i&nbsp;hutniczego. Nasza wiedza pozwala nam doradzać klientom w&nbsp;optymalizacji procesów produkcyjnych, co przekłada się na&nbsp;redukcję kosztów i&nbsp;wzrost wydajności.
+            </p>
+            <p data-pl="Dostarczamy gazy w&nbsp;postaci sprężonej (w&nbsp;butlach i&nbsp;wiązkach) oraz ciekłej do&nbsp;zbiorników kriogenicznych. Nasza oferta obejmuje argon, tlen, azot, dwutlenek węgla, hel, wodór oraz precyzyjnie dobrane mieszanki spawalnicze. Wykorzystujemy nowoczesne zawory zintegrowane i&nbsp;zapewniamy pełne wsparcie technologiczne oraz terminowe dostawy." 
+               data-en="We supply gases in&nbsp;compressed form (in&nbsp;cylinders and&nbsp;bundles) and&nbsp;liquid form for&nbsp;cryogenic tanks. Our offer includes argon, oxygen, nitrogen, carbon dioxide, helium, hydrogen, and&nbsp;precisely selected welding mixtures. We use modern integrated valves and&nbsp;provide full technological support and&nbsp;timely deliveries." 
+               data-de="Wir liefern Gase in&nbsp;komprimierter Form (in&nbsp;Flaschen und&nbsp;Bündeln) und&nbsp;flüssiger Form für&nbsp;Kryotanks. Unser Angebot umfasst Argon, Sauerstoff, Stickstoff, Kohlendioxid, Helium, Wasserstoff und&nbsp;präzise ausgewählte Schweißmischungen. Wir verwenden moderne integrierte Ventile und&nbsp;bieten umfassende technologische Unterstützung und&nbsp;pünktliche Lieferungen.">
+               Dostarczamy gazy w&nbsp;postaci sprężonej (w&nbsp;butlach i&nbsp;wiązkach) oraz ciekłej do&nbsp;zbiorników kriogenicznych. Nasza oferta obejmuje argon, tlen, azot, dwutlenek węgla, hel, wodór oraz precyzyjnie dobrane mieszanki spawalnicze. Wykorzystujemy nowoczesne zawory zintegrowane i&nbsp;zapewniamy pełne wsparcie technologiczne oraz terminowe dostawy.
+            </p>
+        </div>
+        <div class="img-box">
+            <!-- MIEJSCE NA ZDJĘCIE 2 -->
+            <img src="../Grafiki/stalowa.webp" alt="Konstrukcje stalowe i spawanie">
+        </div>
+    </div>
+
+    <!-- Blok 3: Atuty -->
+    <div class="content-row">
+        <div class="text-box">
+            <div class="icon-header">
+                <span class="material-symbols-outlined">verified</span>
+                <h2 data-pl="Nasze atuty i&nbsp;zaplecze technologiczne" 
+                    data-en="Our strengths and&nbsp;technological background" 
+                    data-de="Unsere Stärken und&nbsp;technologischer Hintergrund">Nasze atuty i&nbsp;zaplecze technologiczne</h2>
+            </div>
+
+            <p data-pl="Gwarantujemy sprawny i&nbsp;bezpieczny transport powierzonych zamówień - od&nbsp;ponad dwóch dekad zapewniamy terminowe dostawy dla&nbsp;naszych partnerów. Stawiamy na&nbsp;niezawodność, nowinki techniczne i&nbsp;ciągły rozwój. Nasz wykwalifikowany i&nbsp;odpowiedzialny personel gwarantuje obsługę na&nbsp;najwyższym poziomie, od&nbsp;przygotowania zamówienia po&nbsp;jego finalną realizację u&nbsp;klienta." 
+               data-en="We guarantee efficient and&nbsp;safe transport of&nbsp;entrusted orders - for&nbsp;over two decades we have been providing timely deliveries for&nbsp;our partners. We focus on&nbsp;reliability, technical innovations, and&nbsp;continuous development. Our qualified and&nbsp;responsible staff guarantees the&nbsp;highest level of&nbsp;service, from order preparation to&nbsp;its final execution at&nbsp;the customer's site." 
+               data-de="Wir garantieren einen effizienten und&nbsp;sicheren Transport der&nbsp;anvertrauten Aufträge - seit über zwei Jahrzehnten sorgen wir für&nbsp;pünktliche Lieferungen für&nbsp;unsere Partner. Wir setzen auf&nbsp;Zuverlässigkeit, technische Innovationen und&nbsp;kontinuierliche Entwicklung. Unser qualifiziertes und&nbsp;verantwortungsvolles Personal garantiert den&nbsp;höchsten Servicelevel, von&nbsp;der Auftragsvorbereitung bis&nbsp;zur endgültigen Ausführung beim Kunden.">
+               Gwarantujemy sprawny i&nbsp;bezpieczny transport powierzonych zamówień - od&nbsp;ponad dwóch dekad zapewniamy terminowe dostawy dla&nbsp;naszych partnerów. Stawiamy na&nbsp;niezawodność, nowinki techniczne i&nbsp;ciągły rozwój. Nasz wykwalifikowany i&nbsp;odpowiedzialny personel gwarantuje obsługę na&nbsp;najwyższym poziomie, od&nbsp;przygotowania zamówienia po&nbsp;jego finalną realizację u&nbsp;klienta.
+            </p>
+        </div>
+        <div class="img-box">
+            <!-- MIEJSCE NA ZDJĘCIE 3 -->
+            <img src="../Grafiki/cysterna2.webp" alt="Infrastruktura i atuty firmy">
+        </div>
+    </div>
+</main>
+
+<footer class="main-footer">
+    <div class="footer-content">
+        <div class="footer-col">
+            <img src="../Logo/logo.webp" alt="Omnis" class="footer-logo">
+            <p data-pl="Jesteśmy ekspertami w&nbsp;dziedzinie budowy instalacji oraz dystrybucji gazów technicznych dla&nbsp;nowoczesnego przemysłu." 
+               data-en="We are experts in&nbsp;the installation and&nbsp;distribution of&nbsp;technical gases for&nbsp;modern industry." 
+               data-de="Wir sind Experten für&nbsp;die Installation und&nbsp;den Vertrieb von&nbsp;technischen Gasen für&nbsp;die moderne Industrie.">
+               Jesteśmy ekspertami w&nbsp;dziedzinie budowy instalacji oraz dystrybucji gazów technicznych dla&nbsp;nowoczesnego przemysłu.
+            </p>
+        </div>
+
+        <div class="footer-col">
+            <h4 data-pl="Firma" data-en="Company" data-de="Unternehmen">Firma</h4>
+            <p>Omnis Anna Kiersznowska-Jąderko</p>
+            <p>NIP: 569-157-06-12</p>
+        </div>
+
+        <div class="footer-col">
+            <h4 data-pl="Kontakt" data-en="Contact" data-de="Kontakt">Kontakt</h4>
+            <p>ul. Podgródkowa 59</p>
+            <p>42-470 Dziewki</p>
+            <p style="margin-top: 10px;">biuro@omnis.org.pl</p>
+            <p>+48 797 181 484</p>
+        </div>
+
+        <div class="footer-col">
+            <h4 data-pl="Informacje" data-en="Information" data-de="Informationen">Informacje</h4>
+            <a href="../polityka_prywatnosci.html" data-pl="Polityka Prywatności" data-en="Privacy Policy" data-de="Datenschutzerklärung">Polityka Prywatności</a>
+            <a href="../regulamin.html" data-pl="Regulamin" data-en="Terms of Service" data-de="Nutzungsbedingungen">Regulamin</a>
+            <a href="../o_nas.html" data-pl="O nas" data-en="About Us" data-de="Über uns">O nas</a>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <span data-pl="&copy; 2026 Omnis Gazy Techniczne. Wszelkie prawa zastrzeżone." 
+              data-en="&copy; 2026 Omnis Technical Gases. All rights reserved." 
+              data-de="&copy; 2026 Omnis Technische Gase. Alle Rechte vorbehalten.">
+              &copy; 2026 Omnis Gazy Techniczne. Wszelkie prawa zastrzeżone.
+        </span>
+    </div>
+</footer>
+<script>
+    // Zoptymalizowana funkcja tłumaczenia wspierająca pamięć przeglądarki (localStorage)
+    function changeLang(lang) {
+        // Zmiana aktywnego przycisku
+        document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+        const activeBtn = document.getElementById('btn-' + lang);
+        if(activeBtn) activeBtn.classList.add('active');
+
+        // Płynna wymiana tekstu dla WSZYSTKICH elementów posiadających data-pl
+        document.querySelectorAll('[data-pl]').forEach(el => {
+            el.style.opacity = 0; // Wygaszanie
+            setTimeout(() => {
+                const newText = el.getAttribute('data-' + lang);
+                if(newText) {
+                    el.innerHTML = newText; // Użyte innerHTML zamiast innerText aby tagi &nbsp; działały poprawnie po zmianie
+                }
+                el.style.opacity = 1; // Pojawianie
+            }, 150);
+        });
+
+        // Zapis wyboru do pamięci przeglądarki, aby inne podstrony go pamiętały
+        localStorage.setItem('preferredLang', lang);
+    }
+
+    // Obsługa burger menu dla telefonów
+    const menu = document.querySelector('#mobile-menu');
+    const menuLinks = document.querySelector('.nav-menu');
+    menu.addEventListener('click', () => {
+        menu.classList.toggle('is-active');
+        menuLinks.classList.toggle('active');
+    });
+
+    // Inicjalizacja przy starcie strony
+    window.onload = () => {
+        // Pobiera zapisany język z pamięci lub domyślnie ustawia polski
+        const savedLang = localStorage.getItem('preferredLang') || 'pl';
+        changeLang(savedLang);
+    };
+</script>
+
+</body>
+</html>
