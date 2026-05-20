@@ -7,6 +7,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../style.css">
+        <link rel="icon" href="../../Logo/logo2.webp" type="image/svg+xml">
+    <link rel="icon" href="../../Logo/logo2.webp" sizes="any">
+    <link rel="apple-touch-icon" href="../../Logo/logo2.webp">
     <style>
         :root {
             --bg-color: #0a0a0a;
@@ -27,6 +31,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            
         }
 
       /* Nawigacja */
@@ -177,12 +182,17 @@
         <div class="lang-switcher">
             <button class="lang-btn active" onclick="changeLang('pl')" id="btn-pl">PL</button>
             <button class="lang-btn" onclick="changeLang('en')" id="btn-en">EN</button>
+            <button class="lang-btn" onclick="changeLang('de')" id="btn-de">DE</button>
         </div>
         
+        <div class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+        </div>
+
         <ul class="nav-menu">
-            <li><a href="../../index.html" class="nav-links" data-pl="STRONA GŁÓWNA" data-en="HOME">STRONA GŁÓWNA</a></li>
-            <li><a href="../../o_nas.html" class="nav-links" data-pl="O NAS" data-en="ABOUT US">O NAS</a></li>
-            <li><a href="../../kontakt.html" class="nav-links" data-pl="KONTAKT" data-en="CONTACT">KONTAKT</a></li>
+            <li><a href="../../index.html" class="nav-links" data-pl="STRONA GŁÓWNA" data-en="HOME" data-de="STARTSEITE">STRONA GŁÓWNA</a></li>
+            <li><a href="../../o_nas.html" class="nav-links" data-pl="O NAS" data-en="ABOUT US" data-de="ÜBER UNS">O NAS</a></li>
+            <li><a href="../../kontakt.html" class="nav-links" data-pl="KONTAKT" data-en="CONTACT" data-de="KONTAKT">KONTAKT</a></li>
         </ul>
     </div>
 </nav>
@@ -273,19 +283,74 @@
     <button class="btn-print" onclick="window.print()" data-pl="Generuj Kartę Techniczną (PDF)" data-en="Generate Tech Sheet (PDF)">Generuj Kartę Techniczną (PDF)</button>
 </div>
 
+<footer class="main-footer">
+    <div class="footer-content">
+        <div class="footer-col">
+            <img src="../../Logo/logo.webp" alt="Omnis" class="footer-logo">
+            <p data-pl="Jesteśmy ekspertami w dziedzinie budowy instalacji oraz dystrybucji gazów technicznych dla nowoczesnego przemysłu." 
+               data-en="We are experts in the installation and distribution of technical gases for modern industry." 
+               data-de="Wir sind Experten für die Installation und den Vertrieb von technischen Gasen für die moderne Industrie.">
+               Jesteśmy ekspertami w dziedzinie budowy instalacji oraz dystrybucji gazów technicznych dla nowoczesnego przemysłu.
+            </p>
+        </div>
+
+        <div class="footer-col">
+            <h4 data-pl="Firma" data-en="Company" data-de="Unternehmen">Firma</h4>
+            <p>Omnis Anna Kiersznowska-Jąderko</p>
+            <p>NIP: 569-157-06-12</p>
+        </div>
+
+        <div class="footer-col">
+            <h4 data-pl="Kontakt" data-en="Contact" data-de="Kontakt">Kontakt</h4>
+            <p>ul. Podgródkowa 59</p>
+            <p>42-470 Dziewki</p>
+            <p style="margin-top: 10px;">biuro@omnis.org.pl</p>
+            <p>+48 797 181 484</p>
+        </div>
+
+        <div class="footer-col">
+            <h4 data-pl="Informacje" data-en="Information" data-de="Informationen">Informacje</h4>
+            <a href="polityka_prywatnosci.html" data-pl="Polityka Prywatności" data-en="Privacy Policy" data-de="Datenschutzerklärung">Polityka Prywatności</a>
+            <a href="regulamin.html" data-pl="Regulamin" data-en="Terms of Service" data-de="Nutzungsbedingungen">Regulamin</a>
+            <a href="o_nas.html" data-pl="O nas" data-en="About Us" data-de="Über uns">O nas</a>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <span data-pl="&copy; 2026 Omnis Gazy Techniczne. Wszelkie prawa zastrzeżone." 
+              data-en="&copy; 2026 Omnis Technical Gases. All rights reserved." 
+              data-de="&copy; 2026 Omnis Technische Gase. Alle Rechte vorbehalten.">
+              &copy; 2026 Omnis Gazy Techniczne. Wszelkie prawa zastrzeżone.
+        </span>
+    </div>
+</footer>
+
 <script>
     function changeLang(lang) {
         document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
-        document.getElementById('btn-' + lang).classList.add('active');
+        const activeBtn = document.getElementById('btn-' + lang);
+        if(activeBtn) activeBtn.classList.add('active');
+
         document.querySelectorAll('[data-pl]').forEach(el => {
-            el.style.opacity = 0;
+            el.style.opacity = 0; 
             setTimeout(() => {
-                el.innerHTML = el.getAttribute('data-' + lang);
-                el.style.opacity = 1;
+                const newText = el.getAttribute('data-' + lang);
+                if(newText) {
+                    el.innerText = newText;
+                }
+                el.style.opacity = 1; 
             }, 150);
         });
+
         localStorage.setItem('preferredLang', lang);
     }
+
+    const menu = document.querySelector('#mobile-menu');
+    const menuLinks = document.querySelector('.nav-menu');
+    menu.addEventListener('click', () => {
+        menu.classList.toggle('is-active');
+        menuLinks.classList.toggle('active');
+    });
 
     window.onload = () => {
         const savedLang = localStorage.getItem('preferredLang') || 'pl';

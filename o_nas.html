@@ -33,42 +33,7 @@
             margin-top: 70px;
         }
 
-        /* Nawigacja */
-        .navbar {
-            background: rgba(10, 10, 10, 0.4);
-            backdrop-filter: blur(15px);
-            height: 70px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            border-bottom: 1px solid rgba(138, 43, 226, 0.2);
-        }
-
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-            max-width: 1200px;
-            padding: 0 30px;
-        }
-
-        .lang-switcher { display: flex; align-items: center; gap: 5px; }
-        .lang-btn {
-            background: transparent; border: 1px solid transparent;
-            color: #777; cursor: pointer; font-size: 0.8rem;
-            font-weight: 700; padding: 5px 10px; transition: 0.3s;
-            border-radius: 8px 0 8px 0;
-        }
-        .lang-btn.active { color: var(--text-color); border-color: var(--accent-light); background: rgba(138, 43, 226, 0.1); }
-
-        .nav-menu { display: flex; list-style: none; }
-        .nav-links { color: white; text-decoration: none; padding: 0.5rem 1.5rem; font-weight: 700; font-size: 0.9rem; transition: 0.3s; }
-        .nav-links:hover { color: var(--accent-light); }
+  
 
         /* Hero Subpage */
         .hero-about {
@@ -182,6 +147,7 @@
         <div class="lang-switcher">
             <button class="lang-btn active" onclick="changeLang('pl')" id="btn-pl">PL</button>
             <button class="lang-btn" onclick="changeLang('en')" id="btn-en">EN</button>
+            <button class="lang-btn" onclick="changeLang('de')" id="btn-de">DE</button>
         </div>
         
         <div class="menu-toggle" id="mobile-menu">
@@ -189,9 +155,9 @@
         </div>
 
         <ul class="nav-menu">
-            <li><a href="index.html" class="nav-links" data-pl="STRONA GŁÓWNA" data-en="HOME">STRONA GŁÓWNA</a></li>
-            <li><a href="o_nas.html" class="nav-links" data-pl="O NAS" data-en="ABOUT US">O NAS</a></li>
-            <li><a href="kontakt.html" class="nav-links" data-pl="KONTAKT" data-en="CONTACT">KONTAKT</a></li>
+            <li><a href="index.html" class="nav-links" data-pl="STRONA GŁÓWNA" data-en="HOME" data-de="STARTSEITE">STRONA GŁÓWNA</a></li>
+            <li><a href="o_nas.html" class="nav-links" data-pl="O NAS" data-en="ABOUT US" data-de="ÜBER UNS">O NAS</a></li>
+            <li><a href="kontakt.html" class="nav-links" data-pl="KONTAKT" data-en="CONTACT" data-de="KONTAKT">KONTAKT</a></li>
         </ul>
     </div>
 </nav>
@@ -199,7 +165,7 @@
 <header class="hero-about">
     <div class="hero-about-content">
         <h1 data-pl="Nasza Misja" data-en="Our Mission">Nasza Misja</h1>
-        <p data-pl="Omnis to symbol innowacji w branży gazów technicznych. Nasza pasja to precyzja i bezpieczeństwo. Dostarczamy nie tylko gazy, ale kompletne rozwiązania technologiczne, które optymalizują produkcję naszych partnerów. Od lat budujemy relacje oparte na zaufaniu i najwyższej czystości oferowanych produktów." 
+        <p data-pl="Omnis to symbol innowacji w branży gazów technicznych. Dostarczamy nie tylko gazy, ale kompletne rozwiązania technologiczne, które optymalizują produkcję naszych partnerów. Od lat budujemy relacje oparte na zaufaniu i niezawodności oferowanych produktów." 
            data-en="Omnis is a symbol of innovation in the technical gas industry. Our passion is precision and safety. We provide not just gases, but complete technological solutions that optimize our partners' production. For years, we have been building relationships based on trust and the highest purity of the products offered.">
            Omnis to symbol innowacji w branży gazów technicznych. Nasza pasja to precyzja i bezpieczeństwo. Dostarczamy nie tylko gazy, ale kompletne rozwiązania technologiczne, które optymalizują produkcję naszych partnerów. Od lat budujemy relacje oparte na zaufaniu i najwyższej czystości oferowanych produktów.
         </p>
@@ -235,30 +201,68 @@
     </p>
 </section>
 
-<footer>
-    <span data-pl="&copy; 2026 Omnis. Wszelkie prawa zastrzeżone." 
-          data-en="&copy; 2026 Omnis. All rights reserved.">
-          &copy; 2026 Omnis. Wszelkie prawa zastrzeżone.
-    </span>
+<footer class="main-footer">
+    <div class="footer-content">
+        <div class="footer-col">
+            <img src="Logo/logo.webp" alt="Omnis" class="footer-logo">
+            <p data-pl="Jesteśmy ekspertami w dziedzinie budowy instalacji oraz dystrybucji gazów technicznych dla nowoczesnego przemysłu." 
+               data-en="We are experts in the installation and distribution of technical gases for modern industry." 
+               data-de="Wir sind Experten für die Installation und den Vertrieb von technischen Gasen für die moderne Industrie.">
+               Jesteśmy ekspertami w dziedzinie budowy instalacji oraz dystrybucji gazów technicznych dla nowoczesnego przemysłu.
+            </p>
+        </div>
+
+        <div class="footer-col">
+            <h4 data-pl="Firma" data-en="Company" data-de="Unternehmen">Firma</h4>
+            <p>Omnis Anna Kiersznowska-Jąderko</p>
+            <p>NIP: 569-157-06-12</p>
+        </div>
+
+        <div class="footer-col">
+            <h4 data-pl="Kontakt" data-en="Contact" data-de="Kontakt">Kontakt</h4>
+            <p>ul. Podgródkowa 59</p>
+            <p>42-470 Dziewki</p>
+            <p style="margin-top: 10px;">biuro@omnis.org.pl</p>
+            <p>+48 797 181 484</p>
+        </div>
+
+        <div class="footer-col">
+            <h4 data-pl="Informacje" data-en="Information" data-de="Informationen">Informacje</h4>
+            <a href="polityka_prywatnosci.html" data-pl="Polityka Prywatności" data-en="Privacy Policy" data-de="Datenschutzerklärung">Polityka Prywatności</a>
+            <a href="regulamin.html" data-pl="Regulamin" data-en="Terms of Service" data-de="Nutzungsbedingungen">Regulamin</a>
+            <a href="o_nas.html" data-pl="O nas" data-en="About Us" data-de="Über uns">O nas</a>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <span data-pl="&copy; 2026 Omnis Gazy Techniczne. Wszelkie prawa zastrzeżone." 
+              data-en="&copy; 2026 Omnis Technical Gases. All rights reserved." 
+              data-de="&copy; 2026 Omnis Technische Gase. Alle Rechte vorbehalten.">
+              &copy; 2026 Omnis Gazy Techniczne. Wszelkie prawa zastrzeżone.
+        </span>
+    </div>
 </footer>
 
 <script>
-    // Funkcja tłumaczenia (opensource)
     function changeLang(lang) {
         document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
-        document.getElementById('btn-' + lang).classList.add('active');
+        const activeBtn = document.getElementById('btn-' + lang);
+        if(activeBtn) activeBtn.classList.add('active');
 
         document.querySelectorAll('[data-pl]').forEach(el => {
-            el.style.opacity = 0;
+            el.style.opacity = 0; 
             setTimeout(() => {
-                el.innerText = el.getAttribute('data-' + lang);
-                el.style.opacity = 1;
+                const newText = el.getAttribute('data-' + lang);
+                if(newText) {
+                    el.innerText = newText;
+                }
+                el.style.opacity = 1; 
             }, 150);
         });
+
         localStorage.setItem('preferredLang', lang);
     }
 
-    // Obsługa burgera
     const menu = document.querySelector('#mobile-menu');
     const menuLinks = document.querySelector('.nav-menu');
     menu.addEventListener('click', () => {

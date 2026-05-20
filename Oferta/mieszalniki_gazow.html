@@ -193,33 +193,33 @@
             line-height: 1.2;
         }
 
-.card p { 
-    margin-top: 10%;
-    color: #aaa; 
-    font-size: 0.95rem; 
-    font-weight: 400;
-    
-    /* Pełne wyjustowanie */
-    text-align: center;
-    
-    /* Klucz do braku dziur przy wąskich kolumnach: */
-    hyphens: auto;
-    -webkit-hyphens: auto;
-    -ms-hyphens: auto;
-    
-    /* Ratunek, gdy słowo jest zbyt długie by je podzielić */
-    word-break: break-word; 
+        .card p { 
+            margin-top: 10%;
+            color: #aaa; 
+            font-size: 0.95rem; 
+            font-weight: 400;
+            
+            /* Pełne wyjustowanie */
+            text-align: center;
+            
+            /* Klucz do braku dziur przy wąskich kolumnach: */
+            hyphens: auto;
+            -webkit-hyphens: auto;
+            -ms-hyphens: auto;
+            
+            /* Ratunek, gdy słowo jest zbyt długie by je podzielić */
+            word-break: break-word; 
 
-    /* Zapobieganie "sierotom" */
-    text-wrap: pretty;
-    
-    /* Optymalizacja renderowania fontu */
-    text-rendering: optimizeLegibility;
-    
-    /* Mikro-korekta (usuwa rzeki bieli) */
-    letter-spacing: -0.3px;
-    word-spacing: -1px;
-}
+            /* Zapobieganie "sierotom" */
+            text-wrap: pretty;
+            
+            /* Optymalizacja renderowania fontu */
+            text-rendering: optimizeLegibility;
+            
+            /* Mikro-korekta (usuwa rzeki bieli) */
+            letter-spacing: -0.3px;
+            word-spacing: -1px;
+        }
 
         .coming-soon {
             opacity: 0.7;
@@ -263,32 +263,24 @@
 
 <header class="hero-sub">
     <div class="hero-sub-content">
-        <h1 data-pl="Mieszalniki Gazów" data-en="Gas Mixers">Mieszalniki Gazów</h1>
+        <h1 data-pl="Mieszalniki Gazów" data-en="Gas Mixers" data-de="Gasmischer">Mieszalniki Gazów</h1>
     </div>
 </header>
 
 <section class="features">
-    <div class="card-wrapper coming-soon">
-        <div class="card">
-            <div class="card-icon">!</div>
-            <h2 data-pl="Już wkrótce" data-en="Coming Soon">Już wkrótce</h2>
-            <p data-pl="Nowe rozwiązanie w naszej ofercie. Pracujemy nad systemem, który zrewolucjonizuje Twoją linię produkcyjną." 
-               data-en="New solution in our offer. We are working on a system that will revolutionize your production line.">
-               Nowe rozwiązanie w naszej ofercie. Pracujemy nad systemem, który zrewolucjonizuje Twoją linię produkcyjną.
-            </p>
-        </div>
-    </div>
 
     <div class="card-wrapper">
         <a href="Produkty/produkt2.html" class="card">
             <div class="card-icon">⚡</div>
             <h2 data-pl="MIESZALNIK 420MGT" 
-                data-en="MIXER 420MGT">
+                data-en="MIXER 420MGT"
+                data-de="MISCHER 420MGT">
                 MIESZALNIK 420MGT
             </h2>
-            <p data-pl="W pełni automatyczny system przygotowania jednorodnych mieszanek spawalniczych z cechujący się precyzją na poziomie <1% i wydajnością do 2000 l/min." 
-               data-en="A fully automatic system for preparing homogeneous welding gas mixtures, featuring precision under <1 and flow rates up to 2000 l/min.">
-               Wysoce precyzyjny system mieszania gazów o szerokim zakresie przepływu. Idealny dla zaawansowanych procesów spawalniczych i przemysłowych, gdzie liczy się każda cząsteczka.
+            <p data-pl="W pełni automatyczny system przygotowania jednorodnych mieszanek spawalniczych cechujący się precyzją na poziomie &lt;1% i wydajnością do 2000 l/min." 
+               data-en="A fully automatic system for preparing homogeneous welding gas mixtures, featuring precision under &lt;1% and flow rates up to 2000 l/min."
+               data-de="Ein vollautomatisches System zur Herstellung homogener Schweißgasgemische mit einer Präzision von &lt;1% und einer Durchflussrate von bis zu 2000 l/min.">
+               W pełni automatyczny system przygotowania jednorodnych mieszanek spawalniczych cechujący się precyzją na poziomie &lt;1% i wydajnością do 2000 l/min.
             </p>
         </a>
     </div>
@@ -296,39 +288,90 @@
     <div class="card-wrapper coming-soon">
         <div class="card">
             <div class="card-icon">!</div>
-            <h2 data-pl="Już wkrótce" data-en="Coming Soon">Już wkrótce</h2>
+            <h2 data-pl="Już wkrótce" data-en="Coming Soon" data-de="Demnächst">Już wkrótce</h2>
+            <p data-pl="Nowe rozwiązanie w naszej ofercie. Pracujemy nad systemem, który zrewolucjonizuje Twoją linię produkcyjną." 
+               data-en="New solution in our offer. We are working on a system that will revolutionize your production line."
+               data-de="Eine neue Lösung in unserem Angebot. Wir arbeiten an einem System, das Ihre Produktionslinie revolutionieren wird.">
+               Nowe rozwiązanie w naszej ofercie. Pracujemy nad systemem, który zrewolucjonizuje Twoją linię produkcyjną.
+            </p>
+        </div>
+    </div>
+
+    <div class="card-wrapper coming-soon">
+        <div class="card">
+            <div class="card-icon">!</div>
+            <h2 data-pl="Już wkrótce" data-en="Coming Soon" data-de="Demnächst">Już wkrótce</h2>
             <p data-pl="Kolejne innowacje w przygotowaniu. Rozszerzamy możliwości konfiguracji mieszanek specjalistycznych." 
-               data-en="Further innovations in preparation. We are expanding the possibilities of specialist mixture configurations.">
+               data-en="Further innovations in preparation. We are expanding the possibilities of specialist mixture configurations."
+               data-de="Weitere Innovationen in Vorbereitung. Wir erweitern die Möglichkeiten zur Konfiguration von Spezialgemischen.">
                Kolejne innowacje w przygotowaniu. Rozszerzamy możliwości konfiguracji mieszanek specjalistycznych.
             </p>
         </div>
     </div>
 </section>
 
-<footer>
-    <span data-pl="&copy; 2026 Omnis Wszelkie prawa zastrzeżone." 
-          data-en="&copy; 2026 Omnis All rights reserved.">
-          &copy; 2026 Wszelkie prawa zastrzeżone.
-    </span>
+<footer class="main-footer">
+    <div class="footer-content">
+        <div class="footer-col">
+            <img src="../Logo/logo.webp" alt="Omnis" class="footer-logo">
+            <p data-pl="Jesteśmy ekspertami w dziedzinie budowy instalacji oraz dystrybucji gazów technicznych dla nowoczesnego przemysłu." 
+               data-en="We are experts in the installation and distribution of technical gases for modern industry." 
+               data-de="Wir sind Experten für die Installation und den Vertrieb von technischen Gasen für die moderne Industrie.">
+               Jesteśmy ekspertami w dziedzinie budowy instalacji oraz dystrybucji gazów technicznych dla nowoczesnego przemysłu.
+            </p>
+        </div>
+
+        <div class="footer-col">
+            <h4 data-pl="Firma" data-en="Company" data-de="Unternehmen">Firma</h4>
+            <p>Omnis Anna Kiersznowska-Jąderko</p>
+            <p>NIP: 569-157-06-12</p>
+        </div>
+
+        <div class="footer-col">
+            <h4 data-pl="Kontakt" data-en="Contact" data-de="Kontakt">Kontakt</h4>
+            <p>ul. Podgródkowa 59</p>
+            <p>42-470 Dziewki</p>
+            <p style="margin-top: 10px;">biuro@omnis.org.pl</p>
+            <p>+48 797 181 484</p>
+        </div>
+
+        <div class="footer-col">
+            <h4 data-pl="Informacje" data-en="Information" data-de="Informationen">Informacje</h4>
+            <a href="polityka_prywatnosci.html" data-pl="Polityka Prywatności" data-en="Privacy Policy" data-de="Datenschutzerklärung">Polityka Prywatności</a>
+            <a href="regulamin.html" data-pl="Regulamin" data-en="Terms of Service" data-de="Nutzungsbedingungen">Regulamin</a>
+            <a href="o_nas.html" data-pl="O nas" data-en="About Us" data-de="Über uns">O nas</a>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <span data-pl="&copy; 2026 Omnis Gazy Techniczne. Wszelkie prawa zastrzeżone." 
+              data-en="&copy; 2026 Omnis Technical Gases. All rights reserved." 
+              data-de="&copy; 2026 Omnis Technische Gase. Alle Rechte vorbehalten.">
+              &copy; 2026 Omnis Gazy Techniczne. Wszelkie prawa zastrzeżone.
+        </span>
+    </div>
 </footer>
 
 <script>
-    // Funkcja tłumaczenia (opensource)
     function changeLang(lang) {
         document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
-        document.getElementById('btn-' + lang).classList.add('active');
+        const activeBtn = document.getElementById('btn-' + lang);
+        if(activeBtn) activeBtn.classList.add('active');
 
         document.querySelectorAll('[data-pl]').forEach(el => {
-            el.style.opacity = 0;
+            el.style.opacity = 0; 
             setTimeout(() => {
-                el.innerText = el.getAttribute('data-' + lang);
-                el.style.opacity = 1;
+                const newText = el.getAttribute('data-' + lang);
+                if(newText) {
+                    el.innerText = newText;
+                }
+                el.style.opacity = 1; 
             }, 150);
         });
+
         localStorage.setItem('preferredLang', lang);
     }
 
-    // Obsługa burgera
     const menu = document.querySelector('#mobile-menu');
     const menuLinks = document.querySelector('.nav-menu');
     menu.addEventListener('click', () => {

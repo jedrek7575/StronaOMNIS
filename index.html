@@ -23,28 +23,7 @@
     <link rel="manifest" href="Ikony/site.webmanifest">
     
     <style>
-        :root {
-            --bg-color: #0a0a0a;
-            --text-color: #ffffff;
-            --accent-purple: #4b0082;
-            --accent-light: #8a2be2;
-            --card-bg: #1a1a1a;
-        }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
 
         /* Hero Section */
         .hero {
@@ -58,6 +37,8 @@
             text-align: center;
             overflow: hidden;
             background-color: var(--bg-color); /* Fallback */
+            
+            
         }
 
         .hero::before {
@@ -69,10 +50,10 @@
             background-position: center;
             filter: blur(12px);
             opacity: 0.5;
-            /* translateZ(0) i will-change wymuszają akcelerację sprzętową GPU na telefonach */
-            transform: scale(1.1) translateZ(0);
-            will-change: transform, filter;
+
+           
             z-index: 1;
+            
         }
 
         .hero-content {
@@ -126,9 +107,6 @@
             60% { transform: translateX(-50%) translateY(-5px); }
         }
 
-        .panel {
-            height: 100px;
-        }
 
         /* Features */
         .features {
@@ -155,8 +133,7 @@
             background-position: center;
             
             opacity: 0.5;
-            /* Optymalizacja wydajności */
-            transform: scale(1.1) translateZ(0);
+
             will-change: transform, filter;
             z-index: 0;
         }
@@ -316,66 +293,7 @@
             }
         }
         
-        /* Profesjonalna Stopka */
-        .main-footer {
-            background: #050505;
-            border-top: 1px solid rgba(138, 43, 226, 0.2);
-            padding: 80px 20px 20px;
-            font-size: 0.9rem;
-            color: #888;
-            position: relative;
-            z-index: 10;
-        }
 
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 50px;
-        }
-
-        .footer-logo {
-            width: 180px;
-            margin-bottom: 20px;
-        }
-
-        .footer-col h4 {
-            color: white;
-            margin-bottom: 20px;
-            font-size: 1.1rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: opacity 0.3s ease;
-        }
-
-        .footer-col p {
-            margin-bottom: 10px;
-            font-weight: 400;
-            transition: opacity 0.3s ease;
-        }
-
-        .footer-col a {
-            display: block;
-            color: #888;
-            text-decoration: none;
-            margin-bottom: 10px;
-            transition: color 0.3s ease, opacity 0.3s ease;
-            font-weight: 400;
-        }
-
-        .footer-col a:hover {
-            color: var(--accent-light);
-        }
-
-        .footer-bottom {
-            text-align: center;
-            border-top: 1px solid #1a1a1a;
-            padding-top: 25px;
-            font-size: 0.8rem;
-            transition: opacity 0.3s ease;
-        }
 
     </style>
 </head>
