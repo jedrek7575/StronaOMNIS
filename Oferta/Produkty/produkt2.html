@@ -31,6 +31,8 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            max-width: 100vw;
+            margin-top: 70px;
             
         }
 
@@ -126,7 +128,7 @@
 
         .header-section {margin-top: 10%; display: flex; text-align: center; margin-bottom: 60px; max-width: 1200px; align-items: center; justify-content: center; }
         .header-text {width: 50%; display: flex; flex-direction: column; justify-content: center; align-items: center; }
-        .header-section h1 { font-size: 3.5rem; font-weight: 900;}
+        .header-section h1 { font-size: 2.5rem; font-weight: 900;}
         .header-section p { color: var(--accent-light); font-weight: 700; letter-spacing: 2px; }
 
         .main-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
@@ -160,6 +162,15 @@
             transition: 0.3s ease;
         }
         .btn-print:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(138, 43, 226, 0.3); }
+
+
+ @media (max-width: 768px) {
+
+    .header-section {flex-direction: column; margin-top: 10%; display: flex; text-align: center; margin-bottom: 60px; max-width: 1200px; align-items: center; justify-content: center; }
+    .main-grid {flex-direction: column; display: flex; padding: 5%;}
+ }
+
+
 
         /* Print Engine */
         @media print {
@@ -283,47 +294,7 @@
     <button class="btn-print" onclick="window.print()" data-pl="Generuj Kartę Techniczną (PDF)" data-en="Generate Tech Sheet (PDF)">Generuj Kartę Techniczną (PDF)</button>
 </div>
 
-<footer class="main-footer">
-    <div class="footer-content">
-        <div class="footer-col">
-            <img src="../../Logo/logo.webp" alt="Omnis" class="footer-logo">
-            <p data-pl="Jesteśmy ekspertami w dziedzinie budowy instalacji oraz dystrybucji gazów technicznych dla nowoczesnego przemysłu." 
-               data-en="We are experts in the installation and distribution of technical gases for modern industry." 
-               data-de="Wir sind Experten für die Installation und den Vertrieb von technischen Gasen für die moderne Industrie.">
-               Jesteśmy ekspertami w dziedzinie budowy instalacji oraz dystrybucji gazów technicznych dla nowoczesnego przemysłu.
-            </p>
-        </div>
 
-        <div class="footer-col">
-            <h4 data-pl="Firma" data-en="Company" data-de="Unternehmen">Firma</h4>
-            <p>Omnis Anna Kiersznowska-Jąderko</p>
-            <p>NIP: 569-157-06-12</p>
-        </div>
-
-        <div class="footer-col">
-            <h4 data-pl="Kontakt" data-en="Contact" data-de="Kontakt">Kontakt</h4>
-            <p>ul. Podgródkowa 59</p>
-            <p>42-470 Dziewki</p>
-            <p style="margin-top: 10px;">biuro@omnis.org.pl</p>
-            <p>+48 797 181 484</p>
-        </div>
-
-        <div class="footer-col">
-            <h4 data-pl="Informacje" data-en="Information" data-de="Informationen">Informacje</h4>
-            <a href="polityka_prywatnosci.html" data-pl="Polityka Prywatności" data-en="Privacy Policy" data-de="Datenschutzerklärung">Polityka Prywatności</a>
-            <a href="regulamin.html" data-pl="Regulamin" data-en="Terms of Service" data-de="Nutzungsbedingungen">Regulamin</a>
-            <a href="o_nas.html" data-pl="O nas" data-en="About Us" data-de="Über uns">O nas</a>
-        </div>
-    </div>
-
-    <div class="footer-bottom">
-        <span data-pl="&copy; 2026 Omnis Gazy Techniczne. Wszelkie prawa zastrzeżone." 
-              data-en="&copy; 2026 Omnis Technical Gases. All rights reserved." 
-              data-de="&copy; 2026 Omnis Technische Gase. Alle Rechte vorbehalten.">
-              &copy; 2026 Omnis Gazy Techniczne. Wszelkie prawa zastrzeżone.
-        </span>
-    </div>
-</footer>
 
 <script>
     function changeLang(lang) {
