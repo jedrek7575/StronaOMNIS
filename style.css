@@ -139,7 +139,7 @@
     .nav-links { 
         display: block;
         padding: 1.5rem; 
-        font-size: 1.3rem; /* Duży, czytelny font na telefony */
+        font-size: 1rem !important ;/* Duży, czytelny font na telefony */
         font-weight: 900;
         letter-spacing: 4px;
         color: rgba(255, 255, 255, 0.7);
