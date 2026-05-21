@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regulamin - Omnis</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Ikony -->
+    <link rel="icon" href="Logo/logo2.webp" type="image/svg+xml">
+    <link rel="icon" href="Logo/logo2.webp" sizes="any">
+    <link rel="apple-touch-icon" href="Logo/logo2.webp">
+    
+    <style>
+        /* Styl dedykowany dla podstrony tekstowej (współdzielony z polityką prywatności) */
+        .policy-section {
+            padding: 140px 20px 80px 20px;
+            min-height: 80vh;
+            background-color: var(--bg-color, #0f0f12);
+            color: #ffffff;
+            position: relative;
+            z-index: 2;
+        }
+
+        .policy-container {
+            max-width: 850px;
+            margin: 0 auto;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .policy-container h1 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 40px;
+            color: #ffffff;
+            letter-spacing: -1px;
+            border-left: 5px solid var(--accent-light, #8a2be2);
+            padding-left: 20px;
+        }
+
+        .policy-container h2 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            color: #ffffff;
+            transition: opacity 0.3s ease;
+        }
+
+        .policy-container p, .policy-container li {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #b0b0b8;
+            font-weight: 400;
+            margin-bottom: 20px;
+            transition: opacity 0.3s ease;
+        }
+
+        .policy-container ul {
+            padding-left: 20px;
+            margin-bottom: 20px;
+            list-style-type: square;
+        }
+
+        .policy-container li {
+            margin-bottom: 12px;
+        }
+
+        .policy-container strong {
+            color: #ffffff;
+        }
+
+        .policy-container a {
+            color: var(--accent-light, #8a2be2);
+            text-decoration: none;
+            transition: text-shadow 0.3s ease;
+        }
+
+        .policy-container a:hover {
+            text-shadow: 0 0 8px var(--accent-light);
+        }
+
+        @media (max-width: 768px) {
+            .policy-section {
+                padding: 100px 20px 50px 20px;
+            }
+            .policy-container h1 {
+                font-size: 2rem;
+            }
+            .policy-container h2 {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="nav-container">
+        <div class="lang-switcher">
+            <button class="lang-btn active" onclick="changeLang('pl')" id="btn-pl">PL</button>
+            <button class="lang-btn" onclick="changeLang('en')" id="btn-en">EN</button>
+            <button class="lang-btn" onclick="changeLang('de')" id="btn-de">DE</button>
+        </div>
+        
+        <div class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+        </div>
+
+        <ul class="nav-menu">
+            <li><a href="index.html" class="nav-links" data-pl="STRONA GŁÓWNA" data-en="HOME" data-de="STARTSEITE">STRONA GŁÓWNA</a></li>
+            <li><a href="o_nas.html" class="nav-links" data-pl="O NAS" data-en="ABOUT US" data-de="ÜBER UNS">O NAS</a></li>
+            <li><a href="kontakt.html" class="nav-links" data-pl="KONTAKT" data-en="CONTACT" data-de="KONTAKT">KONTAKT</a></li>
+        </ul>
+    </div>
+</nav>
+
+<section class="policy-section">
+    <div class="policy-container">
+        <h1 data-pl="Regulamin Serwisu" data-en="Terms of Service" data-de="Nutzungsbedingungen">Regulamin Serwisu</h1>
+        
+        <h2 data-pl="1. Postanowienia ogólne" data-en="1. General provisions" data-de="1. Allgemeine Bestimmungen">1. Postanowienia ogólne</h2>
+        <p data-pl="Niniejszy regulamin określa zasady korzystania ze strony internetowej omnis.org.pl. Właścicielem serwisu jest:" 
+           data-en="These regulations define the rules for using the omnis.org.pl website. The owner of the website is:" 
+           data-de="Diese Bestimmungen regeln die Nutzung der Website omnis.org.pl. Eigentümer der Website ist:">
+           Niniejszy regulamin określa zasady korzystania ze strony internetowej omnis.org.pl. Właścicielem serwisu jest:
+        </p>
+        <p>
+            <strong>Omnis Anna Kiersznowska-Jąderko</strong><br>
+            ul. Podgródkowa 59, 42-470 Dziewki<br>
+            NIP: 569-157-06-12<br>
+            e-mail: <a href="mailto:biuro@omnis.org.pl">biuro@omnis.org.pl</a><br>
+            tel: +48 797 181 484
+        </p>
+
+        <h2 data-pl="2. Rodzaj i zakres usług" data-en="2. Type and scope of services" data-de="2. Art und Umfang der Dienstleistungen">2. Rodzaj i zakres usług</h2>
+        <p data-pl="Strona ma charakter wyłącznie informacyjny i służy jako wizytówka firmy w Internecie. Za pośrednictwem witryny nie jest prowadzona bezpośrednia sprzedaż usług ani towarów (brak modułu e-commerce). Do zawarcia jakichkolwiek umów i zleceń dochodzi wyłącznie poprzez kontakt indywidualny (e-mail, telefon) i odrębne ustalenia." 
+           data-en="The website is purely informational and serves as a company showcase on the Internet. No direct sales of services or goods are conducted through the website (no e-commerce module). Any contracts and orders are concluded exclusively through individual contact (email, phone) and separate agreements." 
+           data-de="Die Website dient ausschließlich Informationszwecken und als Unternehmenspräsentation im Internet. Über die Website findet kein direkter Verkauf von Dienstleistungen oder Waren statt (kein E-Commerce-Modul). Jegliche Verträge und Aufträge werden ausschließlich durch individuellen Kontakt (E-Mail, Telefon) und separate Vereinbarungen abgeschlossen.">
+           Strona ma charakter wyłącznie informacyjny i służy jako wizytówka firmy w Internecie. Za pośrednictwem witryny nie jest prowadzona bezpośrednia sprzedaż usług ani towarów (brak modułu e-commerce). Do zawarcia jakichkolwiek umów i zleceń dochodzi wyłącznie poprzez kontakt indywidualny (e-mail, telefon) i odrębne ustalenia.
+        </p>
+
+        <h2 data-pl="3. Zasady korzystania z serwisu" data-en="3. Rules of using the website" data-de="3. Nutzungsbedingungen der Website">3. Zasady korzystania z serwisu</h2>
+        <p data-pl="Korzystanie ze strony jest w pełni bezpłatne. Użytkownik zobowiązany jest do:" 
+           data-en="Using the website is completely free of charge. The user is obliged to:" 
+           data-de="Die Nutzung der Website ist völlig kostenlos. Der Nutzer ist verpflichtet:">
+           Korzystanie ze strony jest w pełni bezpłatne. Użytkownik zobowiązany jest do:
+        </p>
+        <ul>
+            <li data-pl="Korzystania z serwisu w sposób zgodny z obowiązującym prawem oraz dobrymi obyczajami." 
+                data-en="Use the website in a manner consistent with applicable law and good manners." 
+                data-de="Die Website im Einklang mit dem geltenden Recht und den guten Sitten zu nutzen.">
+                Korzystania z serwisu w sposób zgodny z obowiązującym prawem oraz dobrymi obyczajami.
+            </li>
+            <li data-pl="Niedostarczania treści o charakterze bezprawnym, obraźliwym lub złośliwym oprogramowaniem (w tym zakaz prób ataków hakerskich na infrastrukturę strony)." 
+                data-en="Not to provide illegal, offensive content or malware (including a ban on attempted hacking attacks on the site's infrastructure)." 
+                data-de="Keine rechtswidrigen, beleidigenden Inhalte oder Schadsoftware bereitzustellen (einschließlich eines Verbots von Hacking-Versuchen auf die Infrastruktur der Website).">
+                Niedostarczania treści o charakterze bezprawnym, obraźliwym lub złośliwym oprogramowaniem (w tym zakaz prób ataków hakerskich na infrastrukturę strony).
+            </li>
+        </ul>
+
+        <h2 data-pl="4. Własność intelektualna i prawa autorskie" data-en="4. Intellectual property and copyrights" data-de="4. Geistiges Eigentum und Urheberrechte">4. Własność intelektualna i prawa autorskie</h2>
+        <p data-pl="Wszelkie materiały, teksty, opisy, zdjęcia, grafiki oraz logotypy prezentowane na stronie są własnością firmy Omnis i podlegają ochronie prawnej z tytułu praw autorskich. Kopiowanie, modyfikowanie i wykorzystywanie ich do celów komercyjnych bez pisemnej zgody właściciela jest surowo zabronione." 
+           data-en="All materials, texts, descriptions, photos, graphics, and logos presented on the site are the property of Omnis and are legally protected by copyright. Copying, modifying, and using them for commercial purposes without the written consent of the owner is strictly prohibited." 
+           data-de="Alle auf der Website präsentierten Materialien, Texte, Beschreibungen, Fotos, Grafiken und Logos sind Eigentum von Omnis und durch das Urheberrecht gesetzlich geschützt. Das Kopieren, Verändern und Verwenden für kommerzielle Zwecke ohne schriftliche Zustimmung des Eigentümers ist strengstens untersagt.">
+           Wszelkie materiały, teksty, opisy, zdjęcia, grafiki oraz logotypy prezentowane na stronie są własnością firmy Omnis i podlegają ochronie prawnej z tytułu praw autorskich. Kopiowanie, modyfikowanie i wykorzystywanie ich do celów komercyjnych bez pisemnej zgody właściciela jest surowo zabronione.
+        </p>
+
+        <h2 data-pl="5. Odpowiedzialność" data-en="5. Liability" data-de="5. Haftung">5. Odpowiedzialność</h2>
+        <p data-pl="Informacje zawarte na stronie nie stanowią wiążącej oferty handlowej w rozumieniu przepisów Kodeksu Cywilnego. Właściciel dokłada wszelkich starań, aby prezentowane treści były aktualne i rzetelne, jednak nie ponosi odpowiedzialności za ewentualne błędy, braki lub tymczasowe przerwy w dostępie do serwisu z przyczyn technicznych." 
+           data-en="The information contained on the website does not constitute a binding commercial offer within the meaning of the provisions of the Civil Code. The owner makes every effort to ensure that the content presented is up to date and reliable, but is not responsible for any errors, omissions, or temporary interruptions in access to the website for technical reasons." 
+           data-de="Die auf der Website enthaltenen Informationen stellen kein verbindliches kommerzielles Angebot im Sinne der Bestimmungen des Zivilgesetzbuches dar. Der Eigentümer bemüht sich nach besten Kräften sicherzustellen, dass die präsentierten Inhalte aktuell und zuverlässig sind, haftet jedoch nicht für etwaige Fehler, Auslassungen oder vorübergehende Unterbrechungen beim Zugriff auf die Website aus technischen Gründen.">
+           Informacje zawarte na stronie nie stanowią wiążącej oferty handlowej w rozumieniu przepisów Kodeksu Cywilnego. Właściciel dokłada wszelkich starań, aby prezentowane treści były aktualne i rzetelne, jednak nie ponosi odpowiedzialności za ewentualne błędy, braki lub tymczasowe przerwy w dostępie do serwisu z przyczyn technicznych.
+        </p>
+    </div>
+</section>
+
+<footer class="main-footer">
+    <div class="footer-content">
+        <div class="footer-col">
+            <img src="Logo/logo.webp" alt="Omnis" class="footer-logo">
+            <p data-pl="Jesteśmy ekspertami w dziedzinie budowy instalacji oraz dystrybucji gazów technicznych dla nowoczesnego przemysłu." 
+               data-en="We are experts in the installation and distribution of technical gases for modern industry." 
+               data-de="Wir sind Experten für die Installation und den Vertrieb von technischen Gasen für die moderne Industrie.">
+               Jesteśmy ekspertami w dziedzinie budowy instalacji oraz dystrybucji gazów technicznych dla nowoczesnego przemysłu.
+            </p>
+        </div>
+
+        <div class="footer-col">
+            <h4 data-pl="Firma" data-en="Company" data-de="Unternehmen">Firma</h4>
+            <p>Omnis Anna Kiersznowska-Jąderko</p>
+            <p>NIP: 569-157-06-12</p>
+        </div>
+
+        <div class="footer-col">
+            <h4 data-pl="Kontakt" data-en="Contact" data-de="Kontakt">Kontakt</h4>
+            <p>ul. Podgródkowa 59</p>
+            <p>42-470 Dziewki</p>
+            <p style="margin-top: 10px;">biuro@omnis.org.pl</p>
+            <p>+48 797 181 484</p>
+        </div>
+
+        <div class="footer-col">
+            <h4 data-pl="Informacje" data-en="Information" data-de="Informationen">Informacje</h4>
+            <a href="polityka_prywatnosci.html" data-pl="Polityka Prywatności" data-en="Privacy Policy" data-de="Datenschutzerklärung">Polityka Prywatności</a>
+            <a href="regulamin.html" data-pl="Regulamin" data-en="Terms of Service" data-de="Nutzungsbedingungen">Regulamin</a>
+            <a href="o_nas.html" data-pl="O nas" data-en="About Us" data-de="Über uns">O nas</a>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <span data-pl="&copy; 2026 Omnis Gazy Techniczne. Wszelkie prawa zastrzeżone." 
+              data-en="&copy; 2026 Omnis Technical Gases. All rights reserved." 
+              data-de="&copy; 2026 Omnis Technische Gase. Alle Rechte vorbehalten.">
+              &copy; 2026 Omnis Gazy Techniczne. Wszelkie prawa zastrzeżone.
+        </span>
+    </div>
+</footer>
+
+<script>
+    function changeLang(lang) {
+        document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+        const activeBtn = document.getElementById('btn-' + lang);
+        if(activeBtn) activeBtn.classList.add('active');
+
+        document.querySelectorAll('[data-pl]').forEach(el => {
+            el.style.opacity = 0; 
+            setTimeout(() => {
+                const newText = el.getAttribute('data-' + lang);
+                if(newText) {
+                    el.innerText = newText;
+                }
+                el.style.opacity = 1; 
+            }, 150);
+        });
+
+        localStorage.setItem('preferredLang', lang);
+    }
+
+    const menu = document.querySelector('#mobile-menu');
+    const menuLinks = document.querySelector('.nav-menu');
+    menu.addEventListener('click', () => {
+        menu.classList.toggle('is-active');
+        menuLinks.classList.toggle('active');
+    });
+
+    window.onload = () => {
+        const savedLang = localStorage.getItem('preferredLang') || 'pl';
+        changeLang(savedLang);
+    };
+</script>
+
+</body>
+</html>

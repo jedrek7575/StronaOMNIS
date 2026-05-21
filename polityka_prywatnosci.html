@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Polityka Prywatności - Omnis</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Ikony -->
+    <link rel="icon" href="Logo/logo2.webp" type="image/svg+xml">
+    <link rel="icon" href="Logo/logo2.webp" sizes="any">
+    <link rel="apple-touch-icon" href="Logo/logo2.webp">
+    
+    <style>
+        /* Styl dedykowany dla podstrony Polityki Prywatności */
+        .policy-section {
+            padding: 140px 20px 80px 20px;
+            min-height: 80vh;
+            background-color: var(--bg-color, #0f0f12);
+            color: #ffffff;
+            position: relative;
+            z-index: 2;
+        }
+
+        .policy-container {
+            max-width: 850px;
+            margin: 0 auto;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .policy-container h1 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 40px;
+            color: #ffffff;
+            letter-spacing: -1px;
+            border-left: 5px solid var(--accent-light, #8a2be2);
+            padding-left: 20px;
+        }
+
+        .policy-container h2 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            color: #ffffff;
+            transition: opacity 0.3s ease;
+        }
+
+        .policy-container p, .policy-container li {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #b0b0b8;
+            font-weight: 400;
+            margin-bottom: 20px;
+            transition: opacity 0.3s ease;
+        }
+
+        .policy-container ul {
+            padding-left: 20px;
+            margin-bottom: 20px;
+            list-style-type: square;
+        }
+
+        .policy-container li {
+            margin-bottom: 12px;
+        }
+
+        .policy-container strong {
+            color: #ffffff;
+        }
+
+        .policy-container a {
+            color: var(--accent-light, #8a2be2);
+            text-decoration: none;
+            transition: text-shadow 0.3s ease;
+        }
+
+        .policy-container a:hover {
+            text-shadow: 0 0 8px var(--accent-light);
+        }
+
+        @media (max-width: 768px) {
+            .policy-section {
+                padding: 100px 20px 50px 20px;
+            }
+            .policy-container h1 {
+                font-size: 2rem;
+            }
+            .policy-container h2 {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="nav-container">
+        <div class="lang-switcher">
+            <button class="lang-btn active" onclick="changeLang('pl')" id="btn-pl">PL</button>
+            <button class="lang-btn" onclick="changeLang('en')" id="btn-en">EN</button>
+            <button class="lang-btn" onclick="changeLang('de')" id="btn-de">DE</button>
+        </div>
+        
+        <div class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+        </div>
+
+        <ul class="nav-menu">
+            <li><a href="index.html" class="nav-links" data-pl="STRONA GŁÓWNA" data-en="HOME" data-de="STARTSEITE">STRONA GŁÓWNA</a></li>
+            <li><a href="o_nas.html" class="nav-links" data-pl="O NAS" data-en="ABOUT US" data-de="ÜBER UNS">O NAS</a></li>
+            <li><a href="kontakt.html" class="nav-links" data-pl="KONTAKT" data-en="CONTACT" data-de="KONTAKT">KONTAKT</a></li>
+        </ul>
+    </div>
+</nav>
+
+<section class="policy-section">
+    <div class="policy-container">
+        <h1 data-pl="Polityka Prywatności" data-en="Privacy Policy" data-de="Datenschutzerklärung">Polityka Prywatności</h1>
+        
+        <h2 data-pl="1. Administrator Danych Osobowych" data-en="1. Data Controller" data-de="1. Verantwortlicher">1. Administrator Danych Osobowych</h2>
+        <p data-pl="Administratorem danych osobowych zbieranych w związku z funkcjonowaniem serwisu jest:" 
+           data-en="The controller of personal data collected in connection with the operation of the website is:" 
+           data-de="Der Verantwortliche für die im Zusammenhang mit dem Betrieb der Website erhobenen personenbezogenen Daten ist:">
+           Administratorem danych osobowych zbieranych w związku z funkcjonowaniem serwisu jest:
+        </p>
+        <p>
+            <strong>Omnis Anna Kiersznowska-Jąderko</strong><br>
+            ul. Podgródkowa 59, 42-470 Dziewki<br>
+            NIP: 569-157-06-12<br>
+            e-mail: <a href="mailto:biuro@omnis.org.pl">biuro@omnis.org.pl</a><br>
+            tel: +48 797 181 484
+        </p>
+
+        <h2 data-pl="2. Maksymalna Prywatność (Brak Śledzenia i Profilowania)" data-en="2. Maximum Privacy (No Tracking or Profiling)" data-de="2. Maximale Privatsphäre (Kein Tracking oder Profiling)">2. Maksymalna Prywatność (Brak Śledzenia i Profilowania)</h2>
+        <p data-pl="Nasza strona internetowa szanuje Twoją prywatność. Serwis został zaprojektowany w taki sposób, aby przeglądanie jego zawartości było całkowicie anonimowe:" 
+           data-en="Our website respects your privacy. The service has been designed in such a way that browsing its content is completely anonymous:" 
+           data-de="Unsere Website respektiert Ihre Privatsphäre. Der Dienst wurde so konzipiert, dass das Durchsuchen seiner Inhalte vollständig anonym ist:">
+           Nasza strona internetowa szanuje Twoją prywatność. Serwis został zaprojektowany w taki sposób, aby przeglądanie jego zawartości było całkowicie anonimowe:
+        </p>
+        <ul>
+            <li data-pl="Nie stosujemy żadnych skryptów śledzących, analitycznych (np. Google Analytics) ani pikseli marketingowych." 
+                data-en="We do not use any tracking scripts, analytical tools (e.g., Google Analytics), or marketing pixels." 
+                data-de="Wir verwenden keine Tracking-Skripte, Analysetools (z. B. Google Analytics) oder Marketing-Pixel.">
+                Nie stosujemy żadnych skryptów śledzących, analitycznych (np. Google Analytics) ani pikseli marketingowych.
+            </li>
+            <li data-pl="Nie gromadzimy, nie przetwarzamy i nie zapisujemy Twojego adresu IP ani lokalizacji do celów marketingowych." 
+                data-en="We do not collect, process, or store your IP address or location for marketing purposes." 
+                data-de="Wir erheben, verarbeiten oder speichern Ihre IP-Adresse oder Ihren Standort nicht zu Marketingzwecken.">
+                Nie gromadzimy, nie przetwarzamy i nie zapisujemy Twojego adresu IP ani lokalizacji do celów marketingowych.
+            </li>
+            <li data-pl="Nie prowadzimy sprzedaży internetowej, systemów logowania ani newsletterów, co wyklucza automatyczne pozyskiwanie Twoich danych." 
+                data-en="We do not operate online sales, login systems, or newsletters, which rules out any automatic retrieval of your data." 
+                data-de="Wir betreiben keine Online-Verkäufe, Login-Systeme oder Newsletter, was eine automatische Erfassung Ihrer Daten ausschließt.">
+                Nie prowadzimy sprzedaży internetowej, systemów logowania ani newsletterów, co wyklucza automatyczne pozyskiwanie Twoich danych.
+            </li>
+        </ul>
+
+        <h2 data-pl="3. Jedyne Przechowywane Dane: Preferencje Językowe" data-en="3. The Only Stored Data: Language Preferences" data-de="3. Die einzigen gespeicherten Daten: Sprachpräferenzen">3. Jedyne Przechowywane Dane: Preferencje Językowe</h2>
+        <p data-pl="Jedyną informacją, jaką nasza witryna zapisuje na Twoim urządzeniu, jest informacja o wybranym języku (PL, EN lub DE). Wartość ta jest przechowywana w pamięci lokalnej przeglądarki (localStorage) jako zmienna 'preferredLang'." 
+           data-en="The only piece of information our website saves on your device is your language selection (PL, EN, or DE). This value is stored in the browser's local storage (localStorage) as a 'preferredLang' variable." 
+           data-de="Die einzige Information, die unsere Website auf Ihrem Gerät speichert, ist Ihre Sprachauswahl (PL, EN oder DE). Dieser Wert wird im lokalen Speicher des Browsers (localStorage) als Variable 'preferredLang' gespeichert.">
+           Jedyną informacją, jaką nasza witryna zapisuje na Twoim urządzeniu, jest informacja o wybranym języku (PL, EN lub DE). Wartość ta jest przechowywana w pamięci lokalnej przeglądarki (localStorage) jako zmienna 'preferredLang'.
+        </p>
+        <p data-pl="Zapis ten następuje wyłącznie wtedy, gdy samodzielnie klikniesz przycisk zmiany języka w menu. Służy to tylko temu, aby przy Twojej kolejnej wizycie na stronie treść wyświetliła się od razu w wybranym języku. Dane te są całkowicie anonimowe, techniczne i nie pozwalają nam na identyfikację Twojej tożsamości." 
+           data-en="This record occurs only when you manually click the language switcher button in the menu. Its sole purpose is to display the content immediately in the chosen language upon your next visit. This data is completely anonymous, technical, and does not allow us to identify who you are." 
+           data-de="Diese Speicherung erfolgt nur, wenn Sie die Schaltfläche zur Sprachumschaltung im Menü manuell anklicken. Sie dient ausschließlich dazu, den Inhalt bei Ihrem nächsten Besuch sofort in der gewählten Sprache anzuzeigen. Diese Daten sind absolut anonym, technischer Natur und erlauben uns keine Rückschlüsse auf Ihre Identität.">
+           Zapis ten następuje wyłącznie wtedy, gdy samodzielnie klikniesz przycisk zmiany języka w menu. Służy to tylko temu, aby przy Twojej kolejnej wizycie na stronie treść wyświetliła się od razu w wybranym języku. Dane te są całkowicie anonimowe, techniczne i nie pozwalają nam na identyfikację Twojej tożsamości.
+        </p>
+
+        <h2 data-pl="4. Kontakt Poczta Elektroniczną i Telefoniczny" data-en="4. Email and Phone Contact" data-de="4. E-Mail- und Telefonkontakt">4. Kontakt Poczta Elektroniczną i Telefoniczny</h2>
+        <p data-pl="Wszelkie dane osobowe (np. imię, nazwisko, adres e-mail, numer telefonu), które przekażesz nam dobrowolnie za pośrednictwem formularza, tradycyjnej wiadomości e-mail lub podczas rozmowy telefonicznej, będą przetwarzane wyłącznie w celu udzielenia odpowiedzi na Twoje zapytanie biznesowe oraz prowadzenia dalszej korespondencji handlowej. Dane te nie są przekazywane podmiotom trzecim bez Twojej wyraźnej zgody." 
+           data-en="Any personal data (e.g., name, surname, email address, phone number) that you voluntarily provide to us via traditional email or during a phone call will be processed solely to respond to your business inquiry and conduct further commercial correspondence. This data is not shared with third parties without your explicit consent." 
+           data-de="Alle personenbezogenen Daten (z. B. Vorname, Nachname, E-Mail-Adresse, Telefonnummer), die Sie uns freiwillig per traditioneller E-Mail oder während eines Telefonats mitteilen, werden ausschließlich zur Beantwortung Ihrer geschäftlichen Anfrage und zur Führung der weiteren geschäftlichen Korrespondenz verarbeitet. Diese Daten werden ohne Ihre ausdrückliche Zustimmung nicht an Dritte weitergegeben.">
+           Wszelkie dane osobowe (np. imię, nazwisko, adres e-mail, numer telefonu), które przekażesz nam dobrowolnie za pośrednictwem tradycyjnej wiadomości e-mail lub podczas rozmowy telefonicznej, będą przetwarzane wyłącznie w celu udzielenia odpowiedzi na Twoje zapytanie biznesowe oraz prowadzenia dalszej korespondencji handlowej. Dane te nie są przekazywane podmiotom trzecim bez Twojej wyraźnej zgody.
+        </p>
+
+        <h2 data-pl="5. Prawa Użytkownika" data-en="5. User Rights" data-de="5. Rechte des Nutzers">5. Prawa Użytkownika</h2>
+        <p data-pl="Przysługuje Ci prawo do dostępu do swoich danych, ich poprawiania oraz żądania ich usunięcia (w przypadku kontaktu mailowego/telefonicznego). Jeśli chcesz usunąć zapisaną preferencję językową na swoim urządzeniu, możesz to zrobić w każdej chwili -wystarczy wyczyścić pliki cookie i dane witryn (pamięć podręczną) w ustawieniach swojej przeglądarki internetowej." 
+           data-en="You have the right to access, rectify, and request the deletion of your data (in the case of email/phone contact). If you wish to delete the saved language preference on your device, you can do so at any time -simply clear your cookies and site data (cache) in your web browser settings." 
+           data-de="Sie haben das Recht auf Auskunft, Berichtigung und Löschung Ihrer Daten (bei E-Mail-/Telefonkontakt). Wenn Sie die gespeicherte Sprachpräferenz auf Ihrem Gerät löschen möchten, können Sie dies jederzeit tun -leeren Sie einfach die Cookies und Websitedaten (Cache) in den Einstellungen Ihres Webbrowsers.">
+           Przysługuje Ci prawo do dostępu do swoich danych, ich poprawiania oraz żądania ich usunięcia (w przypadku kontaktu mailowego/telefonicznego). Jeśli chcesz usunąć zapisaną preferencję językową na swoim urządzeniu, możesz to zrobić w każdej chwili -wystarczy wyczyścić pliki cookie i dane witryn (pamięć podręczną) w ustawieniach swojej przeglądarki internetowej.
+        </p>
+    </div>
+</section>
+
+<footer class="main-footer">
+    <div class="footer-content">
+        <div class="footer-col">
+            <img src="Logo/logo.webp" alt="Omnis" class="footer-logo">
+            <p data-pl="Jesteśmy ekspertami w dziedzinie budowy instalacji oraz dystrybucji gazów technicznych dla nowoczesnego przemysłu." 
+               data-en="We are experts in the installation and distribution of technical gases for modern industry." 
+               data-de="Wir sind Experten für die Installation und den Vertrieb von technischen Gasen für die moderne Industrie.">
+               Jesteśmy ekspertami w dziedzinie budowy instalacji oraz dystrybucji gazów technicznych dla nowoczesnego przemysłu.
+            </p>
+        </div>
+
+        <div class="footer-col">
+            <h4 data-pl="Firma" data-en="Company" data-de="Unternehmen">Firma</h4>
+            <p>Omnis Anna Kiersznowska-Jąderko</p>
+            <p>NIP: 569-157-06-12</p>
+        </div>
+
+        <div class="footer-col">
+            <h4 data-pl="Kontakt" data-en="Contact" data-de="Kontakt">Kontakt</h4>
+            <p>ul. Podgródkowa 59</p>
+            <p>42-470 Dziewki</p>
+            <p style="margin-top: 10px;">biuro@omnis.org.pl</p>
+            <p>+48 797 181 484</p>
+        </div>
+
+        <div class="footer-col">
+            <h4 data-pl="Informacje" data-en="Information" data-de="Informationen">Informacje</h4>
+            <a href="polityka_prywatnosci.html" data-pl="Polityka Prywatności" data-en="Privacy Policy" data-de="Datenschutzerklärung">Polityka Prywatności</a>
+            <a href="regulamin.html" data-pl="Regulamin" data-en="Terms of Service" data-de="Nutzungsbedingungen">Regulamin</a>
+            <a href="o_nas.html" data-pl="O nas" data-en="About Us" data-de="Über uns">O nas</a>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <span data-pl="&copy; 2026 Omnis Gazy Techniczne. Wszelkie prawa zastrzeżone." 
+              data-en="&copy; 2026 Omnis Technical Gases. All rights reserved." 
+              data-de="&copy; 2026 Omnis Technische Gase. Alle Rechte vorbehalten.">
+              &copy; 2026 Omnis Gazy Techniczne. Wszelkie prawa zastrzeżone.
+        </span>
+    </div>
+</footer>
+
+<script>
+    function changeLang(lang) {
+        document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+        const activeBtn = document.getElementById('btn-' + lang);
+        if(activeBtn) activeBtn.classList.add('active');
+
+        document.querySelectorAll('[data-pl]').forEach(el => {
+            el.style.opacity = 0; 
+            setTimeout(() => {
+                const newText = el.getAttribute('data-' + lang);
+                if(newText) {
+                    el.innerText = newText;
+                }
+                el.style.opacity = 1; 
+            }, 150);
+        });
+
+        localStorage.setItem('preferredLang', lang);
+    }
+
+    const menu = document.querySelector('#mobile-menu');
+    const menuLinks = document.querySelector('.nav-menu');
+    menu.addEventListener('click', () => {
+        menu.classList.toggle('is-active');
+        menuLinks.classList.toggle('active');
+    });
+
+    window.onload = () => {
+        const savedLang = localStorage.getItem('preferredLang') || 'pl';
+        changeLang(savedLang);
+    };
+</script>
+
+</body>
+</html>
