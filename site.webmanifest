@@ -1,22 +1,22 @@
 {
-  "name": "Omnis",
-  "short_name": "Omnis",
-  "description": "Montaż niezawodnych instalacji przemysłowych oraz dystrybucja oprogramowania logistycznego.",
-  "start_url": "/index.html",
-  "display": "standalone",
-  "background_color": "#121212",
-  "theme_color": "#8a2be2",
-  "lang": "pl",
-  "icons": [
-    {
-      "src": "/Logo/logo-mobile.png",
-      "sizes": "192x192",
-      "type": "image/png"
-    },
-    {
-      "src": "/Logo/logo-mobile.png",
-      "sizes": "512x512",
-      "type": "image/png"
-    }
-  ]
+    "name": "Omnis - Instalacje Przemysłowe",
+    "short_name": "Omnis",
+    "description": "Montaż niezawodnych instalacji przemysłowych od ponad 20 lat.",
+    "icons": [
+        {
+            "src": "/Logo/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/Logo/android-chrome-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "theme_color": "#ffffff",
+    "background_color": "#ffffff",
+    "display": "standalone",
+    "start_url": "/",
+    "lang": "pl"
 }
